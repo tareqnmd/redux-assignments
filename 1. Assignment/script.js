@@ -8,18 +8,18 @@ const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
 
 const increment = (value) => {
-	return { type: 'INCREMENT', payload: value };
+	return { type: INCREMENT, payload: value };
 };
 const decrement = (value) => {
-	return { type: 'DECREMENT', payload: value };
+	return { type: DECREMENT, payload: value };
 };
 
 const initialState = { value: 0 };
 
 const counterReducer = (state = initialState, action) => {
-	if (action.type === 'INCREMENT') {
+	if (action.type === INCREMENT) {
 		return { ...state, value: state.value + action.payload };
-	} else if (action.type === 'DECREMENT') {
+	} else if (action.type === DECREMENT) {
 		return { ...state, value: state.value - action.payload };
 	} else {
 		return state;
