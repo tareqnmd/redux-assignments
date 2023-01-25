@@ -4,6 +4,16 @@ const decrementButton = document.querySelector('#decrementButton');
 const resetButton = document.querySelector('#resetButton');
 const addButton = document.querySelector('#addButton');
 
+const INCREMENT = 'increment';
+const DECREMENT = 'decrement';
+
+const increment = (value) => {
+	return { type: 'INCREMENT', payload: value };
+};
+const decrement = (value) => {
+	return { type: 'DECREMENT', payload: value };
+};
+
 const initialState = { value: 0 };
 
 const counterReducer = (state = initialState, action) => {
@@ -26,8 +36,8 @@ const render = () => {
 store.subscribe(render);
 
 incrementButton.addEventListener('click', () => {
-	store.dispatch({ type: 'INCREMENT', payload: 5 });
+	store.dispatch(increment(5));
 });
 decrementButton.addEventListener('click', () => {
-	store.dispatch({ type: 'DECREMENT', payload: 1 });
+	store.dispatch(decrement(4));
 });
