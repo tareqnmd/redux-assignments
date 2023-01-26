@@ -39,6 +39,8 @@ const render = () => {
 	countArea.innerText = state.value.toString();
 };
 
+render();
+
 store.subscribe(render);
 
 incrementButton.addEventListener('click', () => {
