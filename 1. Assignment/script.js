@@ -2,7 +2,6 @@ const countArea = document.querySelector('#countArea');
 const incrementButton = document.querySelector('#incrementButton');
 const decrementButton = document.querySelector('#decrementButton');
 const resetButton = document.querySelector('#resetButton');
-const addButton = document.querySelector('#addButton');
 
 const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
