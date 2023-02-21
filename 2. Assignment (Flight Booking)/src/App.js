@@ -1,18 +1,9 @@
 import './App.css';
+import Header from './components/Header';
 const App = () => {
 	return (
 		<>
-			<header id="header">
-				<div class="container">
-					<img src="/images/lws-logo.svg" alt="logo" class="logo" />
-					<div class="flex items-center">
-						<a class="text-white min-w-[50px] font-medium" href="/">
-							Home
-						</a>
-						<button class="log-btn btn">Login</button>
-					</div>
-				</div>
-			</header>
+			<Header />
 
 			<section>
 				<div class="mt-[160px] mx-4 md:mt-[160px] relative">
