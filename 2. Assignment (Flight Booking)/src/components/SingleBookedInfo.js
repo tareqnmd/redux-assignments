@@ -10,7 +10,7 @@ const SingleBookedInfo = ({ bookedInfo }) => {
 				<p class="lws-bookedTo">{bookedInfo.to}</p>
 			</td>
 			<td class="px-6 py-4 text-center">
-				<p class="lws-bookedDate">{bookedInfo.data}</p>
+				<p class="lws-bookedDate">{bookedInfo.date}</p>
 			</td>
 			<td class="px-6 py-4 text-center">
 				<p class="lws-bookedGustes">{bookedInfo.guests}</p>
