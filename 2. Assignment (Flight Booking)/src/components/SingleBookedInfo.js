@@ -1,22 +1,22 @@
-const SingleBookedInfo = () => {
+const SingleBookedInfo = ({ bookedInfo }) => {
 	return (
 		<tr class="lws-bookedTable text-black">
 			<td class="px-6 py-4">
 				<div class="flex items-center space-x-3">
-					<p class="lws-bookedFrom">Dhaka</p>
+					<p class="lws-bookedFrom">{bookedInfo.from}</p>
 				</div>
 			</td>
 			<td class="px-6 py-4">
-				<p class="lws-bookedTo">Sylhet</p>
+				<p class="lws-bookedTo">{bookedInfo.to}</p>
 			</td>
 			<td class="px-6 py-4 text-center">
-				<p class="lws-bookedDate">11-01-23</p>
+				<p class="lws-bookedDate">{bookedInfo.data}</p>
 			</td>
 			<td class="px-6 py-4 text-center">
-				<p class="lws-bookedGustes">2</p>
+				<p class="lws-bookedGustes">{bookedInfo.guests}</p>
 			</td>
 			<td class="px-6 py-4 text-center">
-				<span class="lws-bookedClass"> Business </span>
+				<span class="lws-bookedClass">{bookedInfo.class}</span>
 			</td>
 			<td class="px-6 py-4 text-center">
 				<div class="flex justify-center gap-4">

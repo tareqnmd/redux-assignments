@@ -1,6 +1,8 @@
+import { useSelector } from 'react-redux';
 import SingleBookedInfo from './SingleBookedInfo';
 
 const BookingList = () => {
+	const bookedData = useSelector((state) => state);
 	return (
 		<div class="table-container">
 			<table class="booking-table">
@@ -15,7 +17,9 @@ const BookingList = () => {
 					</tr>
 				</thead>
 				<tbody class="divide-y divide-gray-300/20" id="lws-previewBooked">
-					<SingleBookedInfo />
+					{bookedData.map((item) => (
+						<SingleBookedInfo bookedInfo={item} />
+					))}
 				</tbody>
 			</table>
 		</div>
