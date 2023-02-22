@@ -98,6 +98,14 @@ img {
 	--tw-shadow: var(--tw-shadow-colored);
 }
 
+.addCity:disabled {
+	background-color: #dfdfdf;
+	color: #999999;
+	opacity: 0.5;
+	box-shadow: none;
+	cursor: not-allowed;
+}
+
 .lws-remove {
 	display: flex;
 	height: 40px;
