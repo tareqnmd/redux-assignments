@@ -20,15 +20,15 @@ const DestinationForm = () => {
 		setBookingData({});
 	};
 	return (
-		<div class="pt-[160px] mx-4 md:mt-[160px] relative">
-			<div class="bg-white rounded-md max-w-6xl w-full mx-auto">
-				<form class="first-hero lws-inputform" onSubmit={addBookingData}>
-					<div class="des-from">
+		<div className="pt-[160px] mx-4 md:mt-[160px] relative">
+			<div className="bg-white rounded-md max-w-6xl w-full mx-auto">
+				<form className="first-hero lws-inputform" onSubmit={addBookingData}>
+					<div className="des-from">
 						<p>Destination From</p>
-						<div class="flex flex-row">
+						<div className="flex flex-row">
 							<img src="/images/icons/Frame.svg" alt="" />
 							<select
-								class="outline-none px-2 py-2 w-full"
+								className="outline-none px-2 py-2 w-full"
 								name="from"
 								id="lws-from"
 								onChange={stateChangeHandler}
@@ -45,12 +45,12 @@ const DestinationForm = () => {
 						</div>
 					</div>
 
-					<div class="des-from">
+					<div className="des-from">
 						<p>Destination To</p>
-						<div class="flex flex-row">
+						<div className="flex flex-row">
 							<img src="/images/icons/Frame.svg" alt="" />
 							<select
-								class="outline-none px-2 py-2 w-full"
+								className="outline-none px-2 py-2 w-full"
 								name="to"
 								id="lws-to"
 								onChange={stateChangeHandler}
@@ -67,11 +67,11 @@ const DestinationForm = () => {
 						</div>
 					</div>
 
-					<div class="des-from">
+					<div className="des-from">
 						<p>Journey Date</p>
 						<input
 							type="date"
-							class="outline-none px-2 py-2 w-full date"
+							className="outline-none px-2 py-2 w-full date"
 							name="date"
 							id="lws-date"
 							onChange={stateChangeHandler}
@@ -79,12 +79,12 @@ const DestinationForm = () => {
 						/>
 					</div>
 
-					<div class="des-from">
+					<div className="des-from">
 						<p>Guests</p>
-						<div class="flex flex-row">
+						<div className="flex flex-row">
 							<img src="/images/icons/Vector (1).svg" alt="" />
 							<select
-								class="outline-none px-2 py-2 w-full"
+								className="outline-none px-2 py-2 w-full"
 								name="guests"
 								id="lws-guests"
 								onChange={stateChangeHandler}
@@ -101,12 +101,12 @@ const DestinationForm = () => {
 						</div>
 					</div>
 
-					<div class="des-from !border-r-0">
+					<div className="des-from !border-r-0">
 						<p>Class</p>
-						<div class="flex flex-row">
+						<div className="flex flex-row">
 							<img src="/images/icons/Vector (3).svg" alt="" />
 							<select
-								class="outline-none px-2 py-2 w-full"
+								className="outline-none px-2 py-2 w-full"
 								name="class"
 								onChange={stateChangeHandler}
 								id="lws-ticketClass"
@@ -122,7 +122,7 @@ const DestinationForm = () => {
 					</div>
 
 					<button
-						class="addCity"
+						className="addCity"
 						type="submit"
 						id="lws-addCity"
 						disabled={bookedData.length === 3}
@@ -141,7 +141,7 @@ const DestinationForm = () => {
 								d="M12 4.5v15m7.5-7.5h-15"
 							/>
 						</svg>
-						<span class="text-sm">Book</span>
+						<span className="text-sm">Book</span>
 					</button>
 				</form>
 			</div>

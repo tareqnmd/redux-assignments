@@ -9,34 +9,34 @@ const SingleBookedInfo = ({ bookedInfo }) => {
 	};
 
 	return (
-		<tr class="lws-bookedTable text-black">
-			<td class="px-6 py-4">
-				<div class="flex items-center space-x-3">
-					<p class="lws-bookedFrom">{bookedInfo.from}</p>
+		<tr className="lws-bookedTable text-black">
+			<td className="px-6 py-4">
+				<div className="flex items-center space-x-3">
+					<p className="lws-bookedFrom">{bookedInfo.from}</p>
 				</div>
 			</td>
-			<td class="px-6 py-4">
-				<p class="lws-bookedTo">{bookedInfo.to}</p>
+			<td className="px-6 py-4">
+				<p className="lws-bookedTo">{bookedInfo.to}</p>
 			</td>
-			<td class="px-6 py-4 text-center">
-				<p class="lws-bookedDate">{bookedInfo.date}</p>
+			<td className="px-6 py-4 text-center">
+				<p className="lws-bookedDate">{bookedInfo.date}</p>
 			</td>
-			<td class="px-6 py-4 text-center">
-				<p class="lws-bookedGustes">{bookedInfo.guests}</p>
+			<td className="px-6 py-4 text-center">
+				<p className="lws-bookedGustes">{bookedInfo.guests}</p>
 			</td>
-			<td class="px-6 py-4 text-center">
-				<span class="lws-bookedClass">{bookedInfo.class}</span>
+			<td className="px-6 py-4 text-center">
+				<span className="lws-bookedClass">{bookedInfo.class}</span>
 			</td>
-			<td class="px-6 py-4 text-center">
-				<div class="flex justify-center gap-4">
-					<button class="lws-remove" onClick={() => removeHandler(bookedInfo.id)}>
+			<td className="px-6 py-4 text-center">
+				<div className="flex justify-center gap-4">
+					<button className="lws-remove" onClick={() => removeHandler(bookedInfo.id)}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke-width="1.5"
 							stroke="currentColor"
-							class="w-6 h-6"
+							className="w-6 h-6"
 						>
 							<path
 								stroke-linecap="round"
