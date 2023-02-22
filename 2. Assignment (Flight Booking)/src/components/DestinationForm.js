@@ -20,7 +20,7 @@ const DestinationForm = () => {
 		setBookingData({});
 	};
 	return (
-		<div class="mt-[160px] mx-4 md:mt-[160px] relative">
+		<div class="pt-[160px] mx-4 md:mt-[160px] relative">
 			<div class="bg-white rounded-md max-w-6xl w-full mx-auto">
 				<form class="first-hero lws-inputform" onSubmit={addBookingData}>
 					<div class="des-from">
