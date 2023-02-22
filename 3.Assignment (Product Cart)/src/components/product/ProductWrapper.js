@@ -3,7 +3,7 @@ import Products from './Products';
 
 const ProductWrapper = () => {
 	return (
-		<div class="productWrapper">
+		<div className="productWrapper">
 			<Products />
 			<ProductForm />
 		</div>

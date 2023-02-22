@@ -8,7 +8,7 @@ const App = () => {
 	return (
 		<>
 			<Navbar />
-			<main class="py-16">
+			<main className="py-16">
 				<Routes>
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/" element={<ProductWrapper />} />
