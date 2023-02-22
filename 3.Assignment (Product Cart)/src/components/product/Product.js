@@ -1,8 +1,8 @@
 const Product = ({ product }) => {
-	const { name, src, category, price, quantity } = product;
+	const { name, image, category, price, quantity } = product;
 	return (
 		<div className="lws-productCard">
-			<img className="lws-productImage" src={src} alt="product" />
+			<img className="lws-productImage" src={image} alt="product" />
 			<div className="p-4 space-y-2">
 				<h4 className="lws-productName">{name}</h4>
 				<p className="lws-productCategory">{category}</p>
