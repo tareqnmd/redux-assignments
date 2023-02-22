@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { bookingAdd } from '../store/booking/actions';
 
 const DestinationForm = () => {
 	const dispatch = useDispatch();
+	const bookedData = useSelector((state) => state);
 	const [bookingData, setBookingData] = useState({});
 	const stateChangeHandler = (e) => {
 		const { name, value } = e.target;
@@ -120,7 +121,12 @@ const DestinationForm = () => {
 						</div>
 					</div>
 
-					<button class="addCity" type="submit" id="lws-addCity">
+					<button
+						class="addCity"
+						type="submit"
+						id="lws-addCity"
+						disabled={bookedData.length === 3}
+					>
 						<svg
 							width="15px"
 							height="15px"
