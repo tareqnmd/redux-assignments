@@ -8,7 +8,7 @@ const bookingReducer = (state = initialState, action) => {
 		case BOOKING_ADD:
 			const addNewBooking = {
 				id: state.length,
-				from: payload.form,
+				from: payload.from,
 				to: payload.to,
 				date: payload.date,
 				guests: payload.guests,

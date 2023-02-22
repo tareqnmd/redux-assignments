@@ -1,8 +1,27 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { bookingAdd } from '../store/booking/actions';
+
 const DestinationForm = () => {
+	const dispatch = useDispatch();
+	const [bookingData, setBookingData] = useState({});
+	const stateChangeHandler = (e) => {
+		const { name, value } = e.target;
+		setBookingData((prev) => ({ ...prev, [name]: value ?? null }));
+	};
+	const addHandler = () => {
+		dispatch(bookingAdd(bookingData));
+	};
+	const addBookingData = (e) => {
+		e.preventDefault();
+		addHandler();
+		e.target.reset();
+		setBookingData({});
+	};
 	return (
 		<div class="mt-[160px] mx-4 md:mt-[160px] relative">
 			<div class="bg-white rounded-md max-w-6xl w-full mx-auto">
-				<form class="first-hero lws-inputform">
+				<form class="first-hero lws-inputform" onSubmit={addBookingData}>
 					<div class="des-from">
 						<p>Destination From</p>
 						<div class="flex flex-row">
@@ -11,6 +30,7 @@ const DestinationForm = () => {
 								class="outline-none px-2 py-2 w-full"
 								name="from"
 								id="lws-from"
+								onChange={stateChangeHandler}
 								required
 							>
 								<option value="" hidden>
@@ -32,6 +52,7 @@ const DestinationForm = () => {
 								class="outline-none px-2 py-2 w-full"
 								name="to"
 								id="lws-to"
+								onChange={stateChangeHandler}
 								required
 							>
 								<option value="" hidden>
@@ -52,6 +73,7 @@ const DestinationForm = () => {
 							class="outline-none px-2 py-2 w-full date"
 							name="date"
 							id="lws-date"
+							onChange={stateChangeHandler}
 							required
 						/>
 					</div>
@@ -64,6 +86,7 @@ const DestinationForm = () => {
 								class="outline-none px-2 py-2 w-full"
 								name="guests"
 								id="lws-guests"
+								onChange={stateChangeHandler}
 								required
 							>
 								<option value="" hidden>
@@ -83,7 +106,8 @@ const DestinationForm = () => {
 							<img src="/images/icons/Vector (3).svg" alt="" />
 							<select
 								class="outline-none px-2 py-2 w-full"
-								name="ticketClass"
+								name="class"
+								onChange={stateChangeHandler}
 								id="lws-ticketClass"
 								required
 							>
