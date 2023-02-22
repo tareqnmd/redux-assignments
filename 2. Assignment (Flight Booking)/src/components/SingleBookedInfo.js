@@ -1,4 +1,13 @@
+import { useDispatch } from 'react-redux';
+import { bookingRemove } from '../store/booking/actions';
+
 const SingleBookedInfo = ({ bookedInfo }) => {
+	const dispatch = useDispatch();
+
+	const removeHandler = (id) => {
+		dispatch(bookingRemove(id));
+	};
+
 	return (
 		<tr class="lws-bookedTable text-black">
 			<td class="px-6 py-4">
@@ -20,7 +29,7 @@ const SingleBookedInfo = ({ bookedInfo }) => {
 			</td>
 			<td class="px-6 py-4 text-center">
 				<div class="flex justify-center gap-4">
-					<button class="lws-remove">
+					<button class="lws-remove" onClick={() => removeHandler(bookedInfo.id)}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
