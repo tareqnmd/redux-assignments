@@ -4,7 +4,7 @@ import { productAdd } from '../../redux/product/actions';
 const ProductForm = () => {
 	const dispatch = useDispatch();
 	const [values, setValues] = useState({});
-	
+
 	const stateChangeHandler = (e) => {
 		const { name, value } = e.target;
 		setValues((prev) => ({ ...prev, [name]: value ?? null }));
@@ -23,7 +23,7 @@ const ProductForm = () => {
 				<form
 					className="space-y-4 text-[#534F4F]"
 					id="lws-addProductForm"
-					onFinish={submitHandler}
+					onSubmit={submitHandler}
 				>
 					<div className="space-y-2">
 						<label htmlFor="name">Product Name</label>
