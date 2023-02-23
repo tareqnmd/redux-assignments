@@ -3,7 +3,7 @@ import { cartAdd, cartDelete, cartRemove } from '../../redux/cart/actions';
 
 const CartItem = ({ item }) => {
 	const dispatch = useDispatch();
-	const { id, image, name, category, price, itemInCart } = item;
+	const { id, image, name, category, price, itemInCart, quantity } = item;
 	const deleteCartItem = () => {
 		dispatch(cartDelete(id));
 	};
@@ -27,7 +27,11 @@ const CartItem = ({ item }) => {
 			</div>
 			<div className="flex items-center justify-center col-span-4 mt-4 space-x-8 md:mt-0">
 				<div className="flex items-center space-x-4">
-					<button className="lws-incrementQuantity" onClick={addCartItem}>
+					<button
+						className="lws-incrementQuantity"
+						disabled={itemInCart === quantity}
+						onClick={addCartItem}
+					>
 						<i className="text-lg fa-solid fa-plus"></i>
 					</button>
 					<span className="lws-cartQuantity">{itemInCart}</span>
