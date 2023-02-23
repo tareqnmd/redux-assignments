@@ -21,7 +21,7 @@ const Product = ({ product }) => {
 						QTY <span className="lws-quantity">{quantity}</span>
 					</p>
 				</div>
-				<button className="lws-btnAddToCart" onClick={addToCart}>
+				<button className="lws-btnAddToCart disabled-st" onClick={addToCart}>
 					Add To Cart
 				</button>
 			</div>

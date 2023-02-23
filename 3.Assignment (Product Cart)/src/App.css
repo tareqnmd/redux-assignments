@@ -433,3 +433,8 @@
 		padding-right: 2rem;
 	}
 }
+
+.disabled-st:disabled {
+	color: #dfdfdf;
+	cursor: not-allowed;
+}

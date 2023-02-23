@@ -28,7 +28,7 @@ const CartItem = ({ item }) => {
 			<div className="flex items-center justify-center col-span-4 mt-4 space-x-8 md:mt-0">
 				<div className="flex items-center space-x-4">
 					<button
-						className="lws-incrementQuantity"
+						className="lws-incrementQuantity disabled-st"
 						disabled={itemInCart === quantity}
 						onClick={addCartItem}
 					>
