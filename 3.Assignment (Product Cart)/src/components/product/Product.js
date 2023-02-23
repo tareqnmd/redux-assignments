@@ -5,7 +5,7 @@ const Product = ({ product }) => {
 	const dispatch = useDispatch();
 	const cartItems = useSelector((state) => state.cart);
 	const { id, name, image, category, price, quantity } = product;
-	const itemInCart = cartItems.find((item) => item.id === id)?.itemInCart;
+	const itemInCart = cartItems.find((item) => item.id === id)?.itemInCart ?? 0;
 	const addToCart = () => {
 		dispatch(cartAdd(product));
 	};
@@ -20,7 +20,7 @@ const Product = ({ product }) => {
 						BDT <span className="lws-price">{price}</span>
 					</p>
 					<p className="productQuantity">
-						QTY <span className="lws-quantity">{quantity}</span>
+						QTY <span className="lws-quantity">{quantity - itemInCart}</span>
 					</p>
 				</div>
 				<button
