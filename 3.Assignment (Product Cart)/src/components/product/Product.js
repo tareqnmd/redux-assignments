@@ -1,9 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartAdd } from '../../redux/cart/actions';
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
-	const { name, image, category, price, quantity } = product;
+	const cartItems = useSelector((state) => state.cart);
+	const { id, name, image, category, price, quantity } = product;
+	const itemInCart = cartItems.find((item) => item.id === id)?.itemInCart;
 	const addToCart = () => {
 		dispatch(cartAdd(product));
 	};
@@ -21,7 +23,11 @@ const Product = ({ product }) => {
 						QTY <span className="lws-quantity">{quantity}</span>
 					</p>
 				</div>
-				<button className="lws-btnAddToCart disabled-st" onClick={addToCart}>
+				<button
+					className="lws-btnAddToCart disabled-st"
+					disabled={quantity === itemInCart}
+					onClick={addToCart}
+				>
 					Add To Cart
 				</button>
 			</div>
