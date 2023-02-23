@@ -5,21 +5,21 @@ const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
 		case CART_ADD:
-			if (state.findIndex((item) => item.id === payload.id)) {
+			if (state.findIndex((item) => item.id === payload.id) !== -1) {
 				return state.map((item) => {
 					if (item.id === payload.id) {
-						return { ...item, cartQuantity: item.cartQuantity + 1 };
+						return { ...item, itemInCart: item.itemInCart + 1 };
 					}
 					return item;
 				});
 			} else {
-				return [...state, { ...payload }];
+				return [...state, { ...payload, itemInCart: 1 }];
 			}
 		case CART_REMOVE:
-			if (state.find((item) => item.id === payload.id)?.cartQuantity > 1) {
+			if (state.find((item) => item.id === payload.id)?.itemInCart > 1) {
 				return state.map((item) => {
 					if (item.id === payload.id) {
-						return { ...item, cartQuantity: item.cartQuantity - 1 };
+						return { ...item, itemInCart: item.itemInCart - 1 };
 					}
 					return item;
 				});
