@@ -7,7 +7,7 @@ const CartItems = () => {
 	return (
 		<div className="space-y-6">
 			{cartItems.map((item) => (
-				<CartItem item={item} />
+				<CartItem key={item.id} item={item} />
 			))}
 		</div>
 	);
