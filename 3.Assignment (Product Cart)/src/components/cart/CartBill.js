@@ -1,4 +1,8 @@
+import { useSelector } from 'react-redux';
+
 const CartBill = () => {
+	const cartItems = useSelector((state) => state.cart);
+	const carPrice = cartItems.reduce((acc, item) => acc + item.itemInCart * item.price, 0);
 	return (
 		<div>
 			<div className="billDetailsCard">
@@ -7,7 +11,7 @@ const CartBill = () => {
 					<div className="flex items-center justify-between">
 						<p>Sub Total</p>
 						<p>
-							BDT <span className="lws-subtotal">8800</span>
+							BDT <span className="lws-subtotal">{carPrice}</span>
 						</p>
 					</div>
 					<div className="flex items-center justify-between">
@@ -25,7 +29,7 @@ const CartBill = () => {
 					<div className="flex items-center justify-between pb-4">
 						<p className="font-bold">TOTAL</p>
 						<p className="font-bold">
-							BDT <span className="lws-total">8800</span>
+							BDT <span className="lws-total">{carPrice}</span>
 						</p>
 					</div>
 					<button className="placeOrderbtn">place order</button>

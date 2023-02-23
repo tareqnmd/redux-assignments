@@ -16,9 +16,9 @@ const reducer = (state = initialState, action) => {
 				return [...state, { ...payload, itemInCart: 1 }];
 			}
 		case CART_REMOVE:
-			if (state.find((item) => item.id === payload.id)?.itemInCart > 1) {
+			if (state.find((item) => item.id === payload)?.itemInCart > 1) {
 				return state.map((item) => {
-					if (item.id === payload.id) {
+					if (item.id === payload) {
 						return { ...item, itemInCart: item.itemInCart - 1 };
 					}
 					return item;
