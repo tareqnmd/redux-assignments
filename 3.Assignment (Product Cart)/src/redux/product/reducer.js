@@ -13,6 +13,8 @@ const reducer = (state = initialState, action) => {
 			const newProduct = {
 				id: nextTodoId(state),
 				...payload,
+				quantity: Number(payload.quantity),
+				price: Number(payload.price),
 			};
 			return [...state, newProduct];
 		default:
