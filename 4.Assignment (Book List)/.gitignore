@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/books-server/node_modules
 /.pnp
 .pnp.js
 

@@ -1,17 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Cart from './components/cart/Cart';
+import BookList from './components/books/BookList';
 import Navbar from './components/Navbar';
-import ProductWrapper from './components/product/ProductWrapper';
+import Wishlist from './components/wishlist/Wishlist';
 
 const App = () => {
 	return (
 		<>
 			<Navbar />
-			<main className="py-16">
+			<main className="py-12 2xl:px-6">
 				<Routes>
-					<Route path="/cart" element={<Cart />} />
-					<Route path="/" element={<ProductWrapper />} />
+					<Route path="/" element={<BookList />} />
+					<Route path="/wishlist" element={<Wishlist />} />
 					<Route path="*" element={<>Not Found</>} />
 				</Routes>
 			</main>
