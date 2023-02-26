@@ -4,7 +4,7 @@ const initialState = [
 		author: 'Mick Herron',
 		thumbnail: 'https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg',
 		price: 14,
-		rating: 3,
+		rating: 3.5,
 		featured: false,
 		id: 1,
 	},
