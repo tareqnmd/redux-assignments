@@ -5,6 +5,7 @@ import Book from './Book';
 const Books = () => {
 	const dispatch = useDispatch();
 	const { type } = useSelector((state) => state.filter);
+	const books = useSelector((state) => state.book);
 	const filterChange = (type) => {
 		dispatch(filterType(type));
 	};
@@ -35,7 +36,10 @@ const Books = () => {
 				</div>
 			</div>
 			<div className="lws-bookContainer">
-				<Book />
+				{books.length === 0 && <>No Book Found</>}
+				{books.map((book) => (
+					<Book key={book.id} book={book} />
+				))}
 			</div>
 		</div>
 	);

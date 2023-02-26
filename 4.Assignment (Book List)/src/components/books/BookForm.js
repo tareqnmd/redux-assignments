@@ -60,8 +60,7 @@ const BookForm = () => {
 					<div className="flex items-center">
 						<input id="input-Bookfeatured" type="checkbox" name="featured" className="w-4 h-4" />
 						<label htmlFor="featured" className="ml-2 text-sm">
-							{' '}
-							This is a featured book{' '}
+							This is a featured book
 						</label>
 					</div>
 
