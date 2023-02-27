@@ -3,9 +3,10 @@ import { filterType } from '../../redux/filters/actions';
 import Book from './Book';
 
 const Books = () => {
-	const dispatch = useDispatch();
-	const { type } = useSelector((state) => state.filter);
+	const filter = useSelector((state) => state.filter);
 	const books = useSelector((state) => state.book);
+	const { type, searchText } = filter;
+	const dispatch = useDispatch();
 	const filterChange = (type) => {
 		dispatch(filterType(type));
 	};
@@ -37,9 +38,12 @@ const Books = () => {
 			</div>
 			<div className="lws-bookContainer">
 				{books.length === 0 && <>No Book Found</>}
-				{books.map((book) => (
-					<Book key={book.id} book={book} />
-				))}
+				{books
+					.filter((item) => (type === 'All' ? item : item.featured === true))
+					.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
+					.map((book) => (
+						<Book key={book.id} book={book} />
+					))}
 			</div>
 		</div>
 	);
