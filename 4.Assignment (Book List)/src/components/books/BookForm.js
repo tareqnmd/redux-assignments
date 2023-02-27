@@ -81,6 +81,7 @@ const BookForm = () => {
 								type="number"
 								onChange={stateChange}
 								name="rating"
+								step="0.1"
 								min="1"
 								max="5"
 							/>
