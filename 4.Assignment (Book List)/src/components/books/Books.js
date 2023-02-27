@@ -10,7 +10,7 @@ const filterMap = (books, type, searchText) => {
 
 const Books = () => {
 	const filter = useSelector((state) => state.filter);
-	const books = useSelector((state) => state.book);
+	const { books } = useSelector((state) => state.book);
 	const { type, searchText } = filter;
 	const dispatch = useDispatch();
 	const filterChange = (type) => {

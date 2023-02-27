@@ -12,19 +12,22 @@ const reducer = (state = initialState, action) => {
 	switch (type) {
 		case BOOK_ADD:
 			const newBook = {
-				id: nextTodoId(state),
+				id: nextTodoId(state.books),
 				...payload,
 			};
-			return [...state, newBook];
+			return { ...state, books: [...state.books, newBook] };
 		case BOOK_EDIT:
-			return state.map((item) => {
-				if (item.id === payload.id) {
-					return { ...payload };
-				}
-				return item;
-			});
+			return {
+				...state,
+				books: state.books.map((item) => {
+					if (item.id === payload.id) {
+						return { ...payload };
+					}
+					return item;
+				}),
+			};
 		case BOOK_DELETE:
-			return state.filter((book) => book.id !== payload);
+			return { ...state, books: state.books.filter((book) => book.id !== payload) };
 		default:
 			return state;
 	}
