@@ -2,6 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterType } from '../../redux/filters/actions';
 import Book from './Book';
 
+const filterMap = (books, type, searchText) => {
+	return books
+		.filter((item) => (type === 'All' ? item : item.featured === true))
+		.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()));
+};
+
 const Books = () => {
 	const filter = useSelector((state) => state.filter);
 	const books = useSelector((state) => state.book);
@@ -38,12 +44,9 @@ const Books = () => {
 			</div>
 			<div className="lws-bookContainer">
 				{books.length === 0 && <>No Book Found</>}
-				{books
-					.filter((item) => (type === 'All' ? item : item.featured === true))
-					.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
-					.map((book) => (
-						<Book key={book.id} book={book} />
-					))}
+				{filterMap(books, type, searchText).map((book) => (
+					<Book key={book.id} book={book} />
+				))}
 			</div>
 		</div>
 	);
