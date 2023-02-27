@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { bookAdd } from '../../redux/books/actions';
 const BookForm = () => {
 	const dispatch = useDispatch();
+	const { editableData } = useSelector((state) => state.book);
 	const [formData, setFormData] = useState({ featured: false });
 
 	const stateChange = (e) => {
@@ -35,6 +36,7 @@ const BookForm = () => {
 							className="text-input"
 							type="text"
 							name="name"
+							value={editableData?.name}
 							onChange={stateChange}
 						/>
 					</div>
@@ -45,6 +47,7 @@ const BookForm = () => {
 							required
 							className="text-input"
 							type="text"
+							value={editableData?.author}
 							onChange={stateChange}
 							name="author"
 						/>
@@ -56,6 +59,7 @@ const BookForm = () => {
 							required
 							className="text-input"
 							type="text"
+							value={editableData?.thumbnail}
 							onChange={stateChange}
 							name="thumbnail"
 						/>
@@ -68,6 +72,7 @@ const BookForm = () => {
 								required
 								className="text-input"
 								type="number"
+								value={editableData?.price}
 								onChange={stateChange}
 								name="price"
 							/>
@@ -80,6 +85,7 @@ const BookForm = () => {
 								className="text-input"
 								type="number"
 								onChange={stateChange}
+								value={editableData?.rating}
 								name="rating"
 								step="0.1"
 								min="1"
@@ -92,6 +98,7 @@ const BookForm = () => {
 						<input
 							onChange={stateChange}
 							type="checkbox"
+							checked={editableData?.featured}
 							name="featured"
 							className="w-4 h-4"
 						/>
@@ -101,7 +108,7 @@ const BookForm = () => {
 					</div>
 
 					<button type="submit" className="submit" id="submit">
-						Add Book
+						{editableData?.id ? 'Update Book' : 'Add Book'}
 					</button>
 				</form>
 			</div>

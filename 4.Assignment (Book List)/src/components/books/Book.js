@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { bookDelete } from '../../redux/books/actions';
+import { bookDelete, bookUpdateData } from '../../redux/books/actions';
 import Star from '../common/Star';
 
 const Book = ({ book }) => {
-	const { id, name, author, thumbnail, price, rating, featured } = book;
 	const dispatch = useDispatch();
+	const { id, name, author, thumbnail, price, rating, featured } = book;
 
-	const bookEditHandler = () => {
-		dispatch(() => {});
+	const bookEditDataHandler = () => {
+		dispatch(bookUpdateData(id));
 	};
 	const bookDeleteHandler = () => {
 		dispatch(bookDelete(id));
@@ -36,7 +36,7 @@ const Book = ({ book }) => {
 				<div className="flex items-center justify-between">
 					{featured && <span className="badge-success lws-Badge">featured</span>}
 					<div className="text-gray-500 space-x-2">
-						<button onClick={() => bookEditHandler()} className="lws-edit">
+						<button onClick={() => bookEditDataHandler()} className="lws-edit">
 							<svg
 								fill="none"
 								viewBox="0 0 24 24"
