@@ -1,4 +1,4 @@
-import { BOOK_ADD, BOOK_DELETE, BOOK_EDIT, BOOK_UPDATE_DATA } from './actionTypes';
+import { BOOK_ADD, BOOK_DELETE, BOOK_EDIT, BOOK_LOADED, BOOK_UPDATE_DATA } from './actionTypes';
 import initialState from './initialState';
 
 const nextTodoId = (data) => {
@@ -10,6 +10,8 @@ const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
 
 	switch (type) {
+		case BOOK_LOADED:
+			return { ...state, editMode: false, editableData: {}, books: payload };
 		case BOOK_ADD:
 			const newBook = {
 				id: nextTodoId(state.books),

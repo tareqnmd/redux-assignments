@@ -1,4 +1,11 @@
-import { BOOK_ADD, BOOK_DELETE, BOOK_EDIT, BOOK_UPDATE_DATA } from './actionTypes';
+import { BOOK_ADD, BOOK_DELETE, BOOK_EDIT, BOOK_LOADED, BOOK_UPDATE_DATA } from './actionTypes';
+
+export const bookLoaded = (payload) => {
+	return {
+		type: BOOK_LOADED,
+		payload,
+	};
+};
 
 export const bookAdd = (payload) => {
 	return {

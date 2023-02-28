@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import getBooksData from '../../redux/books/thunk/getBooksData';
 import { filterType } from '../../redux/filters/actions';
 import Book from './Book';
 
@@ -16,6 +18,11 @@ const Books = () => {
 	const filterChange = (type) => {
 		dispatch(filterType(type));
 	};
+
+	useEffect(() => {
+		dispatch(getBooksData);
+	}, [dispatch]);
+
 	return (
 		<div className="order-2 xl:-order-1">
 			<div className="flex items-center justify-between mb-12">
