@@ -26,15 +26,6 @@
       "rating": 4,
       "featured": true,
       "id": 4
-    },
-    {
-      "name": "asd",
-      "rating": "1",
-      "price": "12",
-      "thumbnail": "sa",
-      "featured": false,
-      "author": "asd",
-      "id": 5
     }
   ]
 }
