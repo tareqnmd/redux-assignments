@@ -1,8 +1,8 @@
 import { bookEdit } from '../actions';
 
-const editBookData = (id, data) => {
+const editBookData = (data) => {
 	return async (dispatch) => {
-		const response = await fetch(`http://localhost:9000/books/${id}`, {
+		const response = await fetch(`http://localhost:9000/books/${data.id}`, {
 			method: 'PATCH',
 			body: JSON.stringify({ data }),
 			headers: { 'Content-Type': 'application/json;charset=UTF-8' },

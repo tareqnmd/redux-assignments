@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getBooksData from '../../redux/books/thunk/editBookData';
+import getBooksData from '../../redux/books/thunk/getBooksData';
 import { filterType } from '../../redux/filters/actions';
 import Book from './Book';
 
