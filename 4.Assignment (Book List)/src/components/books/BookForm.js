@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { bookAdd, bookEdit } from '../../redux/books/actions';
+import addBookData from '../../redux/books/thunk/addBookData';
+import editBookData from '../../redux/books/thunk/editBookData';
 const BookForm = () => {
 	const dispatch = useDispatch();
 	const { editMode, editableData } = useSelector((state) => state.book);
@@ -21,7 +22,7 @@ const BookForm = () => {
 		});
 	};
 	const addHandler = (edit) => {
-		dispatch(edit ? bookEdit(formData) : bookAdd(formData));
+		dispatch(edit ? editBookData(formData) : addBookData(formData));
 	};
 
 	const handleSubmit = (e) => {

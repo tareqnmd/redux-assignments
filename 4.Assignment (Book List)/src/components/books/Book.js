@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { bookDelete, bookUpdateData } from '../../redux/books/actions';
+import { bookUpdateData } from '../../redux/books/actions';
+import deleteBook from '../../redux/books/thunk/deleteBook';
 import Star from '../common/Star';
 
 const Book = ({ book }) => {
@@ -10,7 +11,7 @@ const Book = ({ book }) => {
 		dispatch(bookUpdateData(id));
 	};
 	const bookDeleteHandler = () => {
-		dispatch(bookDelete(id));
+		dispatch(deleteBook(id));
 	};
 
 	const getStarLength = () => {
