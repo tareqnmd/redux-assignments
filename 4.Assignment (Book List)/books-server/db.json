@@ -7,25 +7,7 @@
       "price": 14,
       "rating": 3,
       "featured": false,
-      "id": 1,
-      "data": {
-        "name": "Slow Horses (Deluxe Edition)",
-        "author": "Mick Herron",
-        "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-        "price": 14,
-        "rating": "3.3",
-        "featured": false,
-        "id": 1,
-        "data": {
-          "name": "Slow Horses (Deluxe Edition)",
-          "author": "Mick Herron",
-          "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-          "price": "13",
-          "rating": 3,
-          "featured": false,
-          "id": 1
-        }
-      }
+      "id": 1
     },
     {
       "name": "The Last Thing He Told Me: A Novel",
@@ -46,14 +28,12 @@
       "id": 4
     },
     {
-      "data": {
-        "name": "asda",
-        "rating": "1",
-        "price": "12",
-        "thumbnail": "asd",
-        "featured": true,
-        "author": "asd"
-      },
+      "name": "asd",
+      "rating": "1",
+      "price": "12",
+      "thumbnail": "sa",
+      "featured": false,
+      "author": "asd",
       "id": 5
     }
   ]
