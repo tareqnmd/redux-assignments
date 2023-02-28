@@ -15,10 +15,12 @@ const reducer = (state = initialState, action) => {
 				id: nextTodoId(state.books),
 				...payload,
 			};
-			return { ...state, books: [...state.books, newBook] };
+			return { ...state, editMode: false, editableData: {}, books: [...state.books, newBook] };
 		case BOOK_EDIT:
 			return {
 				...state,
+				editMode: false,
+				editableData: {},
 				books: state.books.map((item) => {
 					if (item.id === payload.id) {
 						return { ...payload };
@@ -29,10 +31,16 @@ const reducer = (state = initialState, action) => {
 		case BOOK_UPDATE_DATA:
 			return {
 				...state,
+				editMode: true,
 				editableData: state.books.find((item) => item.id === payload),
 			};
 		case BOOK_DELETE:
-			return { ...state, books: state.books.filter((book) => book.id !== payload) };
+			return {
+				...state,
+				editMode: false,
+				editableData: {},
+				books: state.books.filter((book) => book.id !== payload),
+			};
 		default:
 			return state;
 	}

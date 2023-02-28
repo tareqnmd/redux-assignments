@@ -3,8 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bookAdd, bookEdit } from '../../redux/books/actions';
 const BookForm = () => {
 	const dispatch = useDispatch();
-	const { editableData } = useSelector((state) => state.book);
-	const [formData, setFormData] = useState({ featured: false });
+	const { editMode, editableData } = useSelector((state) => state.book);
+	const [formData, setFormData] = useState({
+		name: '',
+		rating: '',
+		price: '',
+		thumbnail: '',
+		featured: false,
+		author: '',
+	});
 
 	const stateChange = (e) => {
 		const { name, value, checked } = e.target;
@@ -21,12 +28,12 @@ const BookForm = () => {
 		e.preventDefault();
 		addHandler(!!formData?.id);
 		e.target.reset();
-		setFormData({});
+		setFormData({ name: '', rating: '', price: '', thumbnail: '', featured: false, author: '' });
 	};
 
 	useEffect(() => {
-		Object.keys(editableData).length > 0 && setFormData(editableData);
-	}, [editableData]);
+		editMode && setFormData(editableData);
+	}, [editMode, editableData]);
 
 	return (
 		<div>
@@ -112,7 +119,7 @@ const BookForm = () => {
 					</div>
 
 					<button type="submit" className="submit" id="submit">
-						{formData?.id ? 'Update Book' : 'Add Book'}
+						{editMode ? 'Update Book' : 'Add Book'}
 					</button>
 				</form>
 			</div>
