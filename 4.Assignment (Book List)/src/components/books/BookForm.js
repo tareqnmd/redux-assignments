@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { bookAdd } from '../../redux/books/actions';
+import { bookAdd, bookEdit } from '../../redux/books/actions';
 const BookForm = () => {
 	const dispatch = useDispatch();
 	const { editableData } = useSelector((state) => state.book);
@@ -13,16 +13,20 @@ const BookForm = () => {
 			return { ...prev, ...newData };
 		});
 	};
-	const addHandler = () => {
-		dispatch(bookAdd(formData));
+	const addHandler = (edit) => {
+		dispatch(edit ? bookEdit(formData) : bookAdd(formData));
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addHandler();
+		addHandler(!!formData?.id);
 		e.target.reset();
 		setFormData({});
 	};
+
+	useEffect(() => {
+		Object.keys(editableData).length > 0 && setFormData(editableData);
+	}, [editableData]);
 
 	return (
 		<div>
@@ -36,7 +40,7 @@ const BookForm = () => {
 							className="text-input"
 							type="text"
 							name="name"
-							value={editableData?.name}
+							value={formData?.name}
 							onChange={stateChange}
 						/>
 					</div>
@@ -47,7 +51,7 @@ const BookForm = () => {
 							required
 							className="text-input"
 							type="text"
-							value={editableData?.author}
+							value={formData?.author}
 							onChange={stateChange}
 							name="author"
 						/>
@@ -59,7 +63,7 @@ const BookForm = () => {
 							required
 							className="text-input"
 							type="text"
-							value={editableData?.thumbnail}
+							value={formData?.thumbnail}
 							onChange={stateChange}
 							name="thumbnail"
 						/>
@@ -72,7 +76,7 @@ const BookForm = () => {
 								required
 								className="text-input"
 								type="number"
-								value={editableData?.price}
+								value={formData?.price}
 								onChange={stateChange}
 								name="price"
 							/>
@@ -85,7 +89,7 @@ const BookForm = () => {
 								className="text-input"
 								type="number"
 								onChange={stateChange}
-								value={editableData?.rating}
+								value={formData?.rating}
 								name="rating"
 								step="0.1"
 								min="1"
@@ -98,7 +102,7 @@ const BookForm = () => {
 						<input
 							onChange={stateChange}
 							type="checkbox"
-							checked={editableData?.featured}
+							checked={formData?.featured}
 							name="featured"
 							className="w-4 h-4"
 						/>
@@ -108,7 +112,7 @@ const BookForm = () => {
 					</div>
 
 					<button type="submit" className="submit" id="submit">
-						{editableData?.id ? 'Update Book' : 'Add Book'}
+						{formData?.id ? 'Update Book' : 'Add Book'}
 					</button>
 				</form>
 			</div>
