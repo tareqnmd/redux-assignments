@@ -14,18 +14,6 @@ const Book = ({ book }) => {
 		dispatch(deleteBook(id));
 	};
 
-	const getStarLength = () => {
-		const starLength = [];
-		let bookRating = rating;
-		while (bookRating >= 1) {
-			starLength.push(1);
-			bookRating -= 1;
-		}
-		if (bookRating !== 0) {
-			starLength.push(bookRating);
-		}
-		return starLength;
-	};
 	return (
 		<div className="book-card">
 			<img
@@ -73,8 +61,8 @@ const Book = ({ book }) => {
 					<h4 className="lws-bookName">{name}</h4>
 					<p className="lws-author">{author}</p>
 					<div className="lws-stars">
-						{getStarLength()?.map((item, i) => (
-							<Star key={i} item={item} />
+						{Array.from({ length: rating }, (_, i) => i).map((item, i) => (
+							<Star key={i} />
 						))}
 					</div>
 					<p className="lws-price">BDT {price}</p>

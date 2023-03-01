@@ -29,7 +29,14 @@ const BookForm = () => {
 		e.preventDefault();
 		addHandler(!!formData?.id);
 		e.target.reset();
-		setFormData({ name: '', rating: '', price: '', thumbnail: '', featured: false, author: '' });
+		setFormData({
+			name: '',
+			rating: '',
+			price: '',
+			thumbnail: '',
+			featured: false,
+			author: '',
+		});
 	};
 
 	useEffect(() => {
@@ -99,7 +106,6 @@ const BookForm = () => {
 								onChange={stateChange}
 								value={formData?.rating}
 								name="rating"
-								step="0.1"
 								min="1"
 								max="5"
 							/>
