@@ -11,6 +11,12 @@ const fetchVideos = createAsyncThunk('video/fetchVideos', async () => {
 	return response.data;
 });
 
+const fetchRelatedVideos = createAsyncThunk('video/fetchRelatedVideos', async (tags) => {
+	const tagString = tags.join('&tags_like=');
+	const response = await axios.get(`http://localhost:9000/videos?tags_like${tagString}`);
+	return response.data;
+});
+
 const videoSlice = createSlice({
 	name: 'video',
 	initialState,
@@ -30,6 +36,7 @@ const videoSlice = createSlice({
 			state.videos.loading = false;
 			state.videos.video = {};
 		});
+		builder.addCase(fetchRelatedVideos.pending, (state, action) => {});
 	},
 });
 
