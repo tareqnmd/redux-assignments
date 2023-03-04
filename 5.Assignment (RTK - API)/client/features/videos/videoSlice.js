@@ -8,7 +8,6 @@ const initialState = {
 
 const fetchVideos = createAsyncThunk('video/fetchVideos', async () => {
 	const response = await axios.get('http://localhost:9000/videos');
-	console.log('response.data', response.data);
 	return response.data;
 });
 
