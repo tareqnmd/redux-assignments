@@ -6,9 +6,9 @@ const initialState = {
 	relatedVideos: { error: '', loading: false, videos: [] },
 };
 
-const fetchVideos = createAsyncThunk('video/fetchVideos', async (_, thunkAPI) => {
+const fetchVideos = createAsyncThunk('video/fetchVideos', async (_, { dispatch }) => {
 	const { data } = await axios.get('http://localhost:9000/videos');
-	thunkAPI.dispatch(fetchRelatedVideos(data.tags));
+	dispatch(fetchRelatedVideos(data.tags));
 	return data;
 });
 
