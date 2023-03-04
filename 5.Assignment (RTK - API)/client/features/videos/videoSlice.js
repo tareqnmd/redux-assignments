@@ -6,15 +6,16 @@ const initialState = {
 	relatedVideos: { error: '', loading: false, videos: [] },
 };
 
-const fetchVideos = createAsyncThunk('video/fetchVideos', async () => {
-	const response = await axios.get('http://localhost:9000/videos');
-	return response.data;
+const fetchVideos = createAsyncThunk('video/fetchVideos', async (_, thunkAPI) => {
+	const { data } = await axios.get('http://localhost:9000/videos');
+	thunkAPI.dispatch(fetchRelatedVideos(data.tags));
+	return data;
 });
 
 const fetchRelatedVideos = createAsyncThunk('video/fetchRelatedVideos', async (tags) => {
 	const tagString = tags.join('&tags_like=');
-	const response = await axios.get(`http://localhost:9000/videos?tags_like${tagString}`);
-	return response.data;
+	const { data } = await axios.get(`http://localhost:9000/videos?tags_like${tagString}`);
+	return data;
 });
 
 const videoSlice = createSlice({
@@ -32,11 +33,25 @@ const videoSlice = createSlice({
 			state.videos.video = action.payload;
 		});
 		builder.addCase(fetchVideos.rejected, (state, action) => {
-			state.videos.error = state.error;
+			state.videos.error = state.error.message;
 			state.videos.loading = false;
 			state.videos.video = {};
 		});
-		builder.addCase(fetchRelatedVideos.pending, (state, action) => {});
+		builder.addCase(fetchRelatedVideos.pending, (state, action) => {
+			state.relatedVideos.error = '';
+			state.relatedVideos.loading = true;
+			state.relatedVideos.videos = [];
+		});
+		builder.addCase(fetchRelatedVideos.fulfilled, (state, action) => {
+			state.relatedVideos.error = '';
+			state.relatedVideos.loading = false;
+			state.relatedVideos.videos = action.payload;
+		});
+		builder.addCase(fetchRelatedVideos.rejected, (state, action) => {
+			state.relatedVideos.error = state.error.message;
+			state.relatedVideos.loading = false;
+			state.relatedVideos.videos = [];
+		});
 	},
 });
 
