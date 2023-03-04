@@ -8,27 +8,28 @@ const initialState = {
 
 const fetchVideos = createAsyncThunk('video/fetchVideos', async () => {
 	const response = await axios.get('http://localhost:9000/videos');
+	console.log('response.data', response.data);
 	return response.data;
 });
 
 const videoSlice = createSlice({
 	name: 'video',
 	initialState,
-	extraReducer: (builder) => {
+	extraReducers: (builder) => {
 		builder.addCase(fetchVideos.pending, (state, action) => {
-			state.error = '';
-			state.loading = true;
-			state.video = {};
+			state.videos.error = '';
+			state.videos.loading = true;
+			state.videos.video = {};
 		});
 		builder.addCase(fetchVideos.fulfilled, (state, action) => {
-			state.error = '';
-			state.loading = false;
-			state.video = action.payload;
+			state.videos.error = '';
+			state.videos.loading = false;
+			state.videos.video = action.payload;
 		});
 		builder.addCase(fetchVideos.rejected, (state, action) => {
-			state.error = state.error;
-			state.loading = false;
-			state.video = {};
+			state.videos.error = state.error;
+			state.videos.loading = false;
+			state.videos.video = {};
 		});
 	},
 });
