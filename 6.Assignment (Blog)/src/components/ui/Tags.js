@@ -1,8 +1,8 @@
 const Tags = ({ tags = [] }) => {
 	return (
 		<div className="lws-tags">
-			{tags?.map((tag) => (
-				<span>{tag}</span>
+			{tags?.map((tag, index) => (
+				<span key={index}>{tag}</span>
 			))}
 		</div>
 	);
