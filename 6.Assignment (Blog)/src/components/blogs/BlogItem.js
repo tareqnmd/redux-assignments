@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchBlog } from '../../features/blog/blogSlice';
+import { blogBookmark, blogLikes, fetchBlog } from '../../features/blog/blogSlice';
 import Tags from '../ui/Tags';
 import RelatedBlogs from './RelatedBlogs';
 
@@ -10,6 +10,12 @@ const BlogItem = () => {
 	const dispatch = useDispatch();
 	const { blog } = useSelector((state) => state.blog);
 	const { id, title, image, description, likes, tags, isSaved } = blog;
+	const bookmarkController = () => {
+		dispatch(blogBookmark({ id, isSaved: !isSaved }));
+	};
+	const likeController = () => {
+		dispatch(blogLikes({ id, likes: likes + 1 }));
+	};
 	useEffect(() => {
 		dispatch(fetchBlog(blogId));
 	}, [blogId, dispatch]);
@@ -23,10 +29,14 @@ const BlogItem = () => {
 					</h1>
 					<Tags tags={tags} />
 					<div className="btn-group">
-						<button className="like-btn" id="lws-singleLinks">
+						<button onClick={likeController} className="like-btn" id="lws-singleLinks">
 							<i className="fa-regular fa-thumbs-up"></i> {likes}
 						</button>
-						<button className={`active ${isSaved ? 'save-btn' : ''}`} id="lws-singleSavedBtn">
+						<button
+							onClick={bookmarkController}
+							className={`active ${isSaved ? 'save-btn' : ''}`}
+							id="lws-singleSavedBtn"
+						>
 							<i className="fa-regular fa-bookmark"></i> {isSaved ? 'Saved' : 'Save'}
 						</button>
 					</div>

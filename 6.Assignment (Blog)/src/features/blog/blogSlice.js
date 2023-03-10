@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getBlog from './blogAPI';
+import getBlog, { likeBlog, toggleBookmark } from './blogAPI';
 
 const initialState = {
 	blog: {},
@@ -10,6 +10,14 @@ const initialState = {
 
 export const fetchBlog = createAsyncThunk('blog/fetchBlog', async (id) => {
 	const blog = getBlog(id);
+	return blog;
+});
+export const blogBookmark = createAsyncThunk('blog/blogBookmark', async ({ id, isSaved }) => {
+	const blog = toggleBookmark(id, isSaved);
+	return blog;
+});
+export const blogLikes = createAsyncThunk('blog/blogLikes', async ({ id, likes }) => {
+	const blog = likeBlog(id, likes);
 	return blog;
 });
 
