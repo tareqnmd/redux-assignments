@@ -5,7 +5,7 @@ const BlogCard = ({ blog = {} }) => {
 	const { id, title, image, createdAt, likes, tags, isSaved } = blog;
 	return (
 		<div className="lws-card">
-			<Link to={`blog/${id}`}>
+			<Link to={`/blog/${id}`}>
 				<img src={image} className="lws-card-image" alt={title} />
 			</Link>
 			<div className="p-4">
@@ -16,7 +16,7 @@ const BlogCard = ({ blog = {} }) => {
 						{likes}
 					</p>
 				</div>
-				<Link to={`blog/${id}`} className="lws-postTitle">
+				<Link to={`/blog/${id}`} className="lws-postTitle">
 					{title}
 				</Link>
 				<Tags tags={tags} />

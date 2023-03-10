@@ -6,11 +6,11 @@ const RelatedBlog = ({ blog = {} }) => {
 
 	return (
 		<div className="card">
-			<Link to={`blog/${id}`}>
+			<Link to={`/blog/${id}`}>
 				<img src={image} className="card-image" alt={title} />
 			</Link>
 			<div className="p-4">
-				<Link to={`blog/${id}`} className="text-lg post-title lws-RelatedPostTitle">
+				<Link to={`/blog/${id}`} className="text-lg post-title lws-RelatedPostTitle">
 					{title}
 				</Link>
 				<Tags tags={tags} />

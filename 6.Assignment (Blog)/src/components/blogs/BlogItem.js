@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchBlog } from '../../features/blog/blogSlice';
 import Tags from '../ui/Tags';
 import RelatedBlogs from './RelatedBlogs';
 
 const BlogItem = () => {
-	const { title, image, description, likes, tags, isSaved } = {};
+	const { blogId } = useParams();
+	const dispatch = useDispatch();
+	const { blog } = useSelector((state) => state.blog);
+	const { id, title, image, description, likes, tags, isSaved } = blog;
+	useEffect(() => {
+		dispatch(fetchBlog(blogId));
+	}, [blogId, dispatch]);
 	return (
 		<section className="post-page-container">
 			<main className="post">
@@ -25,7 +35,7 @@ const BlogItem = () => {
 					</div>
 				</div>
 			</main>
-			<RelatedBlogs />
+			<RelatedBlogs id={id} tags={tags} />
 		</section>
 	);
 };
