@@ -20,9 +20,11 @@ const BlogCard = ({ blog = {} }) => {
 					{title}
 				</Link>
 				<Tags tags={tags} />
-				<div className="flex gap-2 mt-4">
-					<span className="lws-badge"> {isSaved && 'Saved'} </span>
-				</div>
+				{isSaved && (
+					<div className="flex gap-2 mt-4">
+						<span className="lws-badge"> Saved </span>
+					</div>
+				)}
 			</div>
 		</div>
 	);

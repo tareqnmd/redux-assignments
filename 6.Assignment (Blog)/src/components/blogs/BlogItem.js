@@ -26,7 +26,7 @@ const BlogItem = () => {
 						<button className="like-btn" id="lws-singleLinks">
 							<i className="fa-regular fa-thumbs-up"></i> {likes}
 						</button>
-						<button className="active save-btn" id="lws-singleSavedBtn">
+						<button className={`active ${isSaved ? 'save-btn' : ''}`} id="lws-singleSavedBtn">
 							<i className="fa-regular fa-bookmark"></i> {isSaved ? 'Saved' : 'Save'}
 						</button>
 					</div>
