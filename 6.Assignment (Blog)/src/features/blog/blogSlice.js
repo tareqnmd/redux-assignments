@@ -24,6 +24,11 @@ export const blogLikes = createAsyncThunk('blog/blogLikes', async ({ id, likes }
 const blogSlice = createSlice({
 	name: 'blog',
 	initialState,
+	reducers: {
+		blogsPage: (state, action) => {
+			// state.page = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchBlog.pending, (state, action) => {
 			state.blog = {};
