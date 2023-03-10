@@ -43,6 +43,42 @@ const blogSlice = createSlice({
 			state.isError = true;
 			state.error = action.error.message;
 		});
+		builder.addCase(blogBookmark.pending, (state, action) => {
+			state.blog = {};
+			state.isLoading = true;
+			state.isError = false;
+			state.error = '';
+		});
+		builder.addCase(blogBookmark.fulfilled, (state, action) => {
+			state.blog = action.payload;
+			state.isLoading = false;
+			state.isError = false;
+			state.error = '';
+		});
+		builder.addCase(blogBookmark.rejected, (state, action) => {
+			state.blog = {};
+			state.isLoading = true;
+			state.isError = true;
+			state.error = action.error.message;
+		});
+		builder.addCase(blogLikes.pending, (state, action) => {
+			state.blog = {};
+			state.isLoading = true;
+			state.isError = false;
+			state.error = '';
+		});
+		builder.addCase(blogLikes.fulfilled, (state, action) => {
+			state.blog = action.payload;
+			state.isLoading = false;
+			state.isError = false;
+			state.error = '';
+		});
+		builder.addCase(blogLikes.rejected, (state, action) => {
+			state.blog = {};
+			state.isLoading = true;
+			state.isError = true;
+			state.error = action.error.message;
+		});
 	},
 });
 
