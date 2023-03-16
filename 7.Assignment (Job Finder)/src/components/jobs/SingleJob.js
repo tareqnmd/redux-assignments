@@ -1,20 +1,34 @@
-const SingleJob = () => {
+import { useDispatch } from 'react-redux';
+import { addEditData, removeJob } from '../../features/job/jobSlice';
+import { numberWithCommas } from '../../utils/thousandSeparator';
+
+const SingleJob = ({ job }) => {
+	const { id, title, type, salary, deadline } = job;
+	const dispatch = useDispatch();
+
+	const editHandler = () => {
+		dispatch(addEditData(job));
+	};
+	const deleteHandler = () => {
+		dispatch(removeJob(id));
+	};
+
 	return (
 		<div className="lws-single-job">
 			<div className="flex-1 min-w-0">
-				<h2 className="lws-title">Back End Developer</h2>
+				<h2 className="lws-title">{title}</h2>
 				<div className="job-footers">
 					<div className="lws-type">
 						<i className="fa-solid fa-stop !text-[#FF8A00] text-lg mr-1.5"></i>
-						Full-time
+						{type}
 					</div>
 					<div className="lws-salary">
 						<i className="fa-solid fa-bangladeshi-taka-sign text-slate-400 text-lg mr-1.5"></i>
-						BDT 40,000
+						BDT {numberWithCommas(salary)}
 					</div>
 					<div className="lws-deadline">
 						<i className="fa-regular fa-calendar text-slate-400 text-lg mr-1.5"></i>
-						Closing on 2022-12-31
+						Closing on {deadline}
 					</div>
 				</div>
 			</div>
@@ -23,6 +37,7 @@ const SingleJob = () => {
 					<button
 						type="button"
 						className="lws-edit btn btn-primary"
+						onClick={editHandler}
 					>
 						<i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
 						Edit
@@ -32,7 +47,8 @@ const SingleJob = () => {
 				<span className="sm:ml-3">
 					<button
 						type="button"
-						className="lws-delete btn btn-danger "
+						className="lws-delete btn btn-danger"
+						onClick={deleteHandler}
 					>
 						<i className="fa-solid fa-trash text-gray-300 -ml-1 mr-2"></i>
 						Delete
