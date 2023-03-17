@@ -7,6 +7,8 @@ const initialState = {
 	isError: false,
 	error: '',
 	editJobData: {},
+	searchText: '',
+	sort: '',
 };
 
 export const getAllJobs = createAsyncThunk('fetch/fetchJobs', async ({ type = '' } = {}) => {
@@ -38,6 +40,12 @@ const jobSlice = createSlice({
 		},
 		removeEditData: (state, action) => {
 			state.editJobData = {};
+		},
+		searchByText: (state, action) => {
+			state.searchText = action.payload;
+		},
+		searchBySort: (state, action) => {
+			state.sort = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -105,5 +113,5 @@ const jobSlice = createSlice({
 			});
 	},
 });
-export const { addEditData, removeEditData } = jobSlice.actions;
+export const { addEditData, removeEditData, searchBySort, searchByText } = jobSlice.actions;
 export default jobSlice.reducer;

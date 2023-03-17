@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { searchBySort, searchByText } from '../../features/job/jobSlice';
+
 const JobHeader = () => {
+	const dispatch = useDispatch();
 	return (
 		<div className="md:flex space-y-2 md:space-y-0 justify-between mb-10 ">
 			<h1 className="lws-section-title">All Available Jobs</h1>
@@ -10,6 +14,9 @@ const JobHeader = () => {
 						placeholder="Search Job"
 						className="search-input"
 						id="lws-searchJob"
+						onChange={(e) => {
+							dispatch(searchByText(e.target.value));
+						}}
 					/>
 				</div>
 				<select
@@ -17,10 +24,13 @@ const JobHeader = () => {
 					name="sort"
 					autoComplete="sort"
 					className="flex-1"
+					onChange={(e) => {
+						dispatch(searchBySort(e.target.value));
+					}}
 				>
-					<option>Default</option>
-					<option>Salary (Low to High)</option>
-					<option>Salary (High to Low)</option>
+					<option value="">Default</option>
+					<option value="low">Salary (Low to High)</option>
+					<option value="high">Salary (High to Low)</option>
 				</select>
 			</div>
 		</div>
