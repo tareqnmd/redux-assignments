@@ -38,9 +38,16 @@
     {
       "title": "Full Stack Developer",
       "type": "Internship",
-      "salary": "18000",
+      "salary": 22000,
       "deadline": "2023-12-31",
       "id": 7
+    },
+    {
+      "title": "Product Manager",
+      "salary": 200000,
+      "deadline": "2023-03-25",
+      "type": "Full Time",
+      "id": 8
     }
   ]
 }

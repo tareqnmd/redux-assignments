@@ -15,15 +15,18 @@ export const getAllJobs = createAsyncThunk('fetch/fetchJobs', async () => {
 });
 
 export const createJob = createAsyncThunk('fetch/createJob', async (data) => {
-	await addJob(data);
+	const response = await addJob(data);
+	return response;
 });
 
-export const changeJob = createAsyncThunk('fetch/changeJob', async (data) => {
-	await editJob(data);
+export const changeJob = createAsyncThunk('fetch/changeJob', async ({ id, data }) => {
+	const response = await editJob(id, data);
+	return response;
 });
 
 export const removeJob = createAsyncThunk('fetch/deleteJob', async (id) => {
-	await deleteJob(id);
+	const response = await deleteJob(id);
+	return response;
 });
 
 const jobSlice = createSlice({
@@ -91,7 +94,7 @@ const jobSlice = createSlice({
 				state.isError = false;
 			})
 			.addCase(removeJob.fulfilled, (state, action) => {
-				state.jobs = state.jobs.filter((item) => item.id !== action.arg.id);
+				state.jobs = state.jobs.filter((item) => item.id !== action.meta.arg);
 				state.isLoading = false;
 				state.isError = false;
 			})

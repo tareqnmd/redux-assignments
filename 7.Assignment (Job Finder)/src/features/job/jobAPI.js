@@ -10,9 +10,8 @@ export const addJob = async (data) => {
 	return response.data;
 };
 
-export const editJob = async (data) => {
-	const { id, ...rest } = data;
-	const response = await axios.patch(`/jobs/${id}`, rest);
+export const editJob = async (id, data) => {
+	const response = await axios.patch(`/jobs/${id}`, data);
 	return response.data;
 };
 

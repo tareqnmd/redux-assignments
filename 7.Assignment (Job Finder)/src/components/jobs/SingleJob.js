@@ -1,13 +1,15 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addEditData, removeJob } from '../../features/job/jobSlice';
 import { numberWithCommas } from '../../utils/thousandSeparator';
 
 const SingleJob = ({ job }) => {
-	const { id, title, type, salary, deadline } = job;
+	const { id, title, type, salary, deadline } = job || {};
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate();
 	const editHandler = () => {
 		dispatch(addEditData(job));
+		navigate(`/edit/${id}`);
 	};
 	const deleteHandler = () => {
 		dispatch(removeJob(id));
