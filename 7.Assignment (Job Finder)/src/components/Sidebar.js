@@ -1,34 +1,46 @@
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { removeEditData } from '../features/job/jobSlice';
 
 const Sidebar = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const route = (type = '/') => {
+		navigate(type);
+		dispatch(removeEditData());
+	};
 	return (
 		<div className="sidebar">
 			<nav>
 				<ul className="space-y-4">
 					<li>
-						<Link
-							to="/"
-							className="main-menu menu-active"
-							id="lws-alljobs-menu"
+						<span
+							onClick={() => route('/')}
+							className={`main-menu cursor-pointer ${
+								location.pathname === '/' ? 'menu-active' : ''
+							}`}
+							id="home"
 						>
 							<i className="fa-solid fa-briefcase"></i>
 							<span> All Available Jobs</span>
-						</Link>
+						</span>
 						<ul className="space-y-6 lg:space-y-2 ">
 							<li>
-								<span className="sub-menu">
+								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#FF5757]"></i>
 									Internship
 								</span>
 							</li>
 							<li>
-								<span className="sub-menu">
+								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#FF8A00]"></i>
 									Full Time
 								</span>
 							</li>
 							<li>
-								<span className="sub-menu">
+								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#56E5C4]"></i>
 									Remote
 								</span>
@@ -36,14 +48,16 @@ const Sidebar = () => {
 						</ul>
 					</li>
 					<li>
-						<Link
-							to="/create"
-							className="main-menu"
-							id="lws-addJob-menu"
+						<span
+							onClick={() => route('/create')}
+							className={`main-menu cursor-pointer ${
+								location.pathname === '/create' ? 'menu-active' : ''
+							}`}
+							id="create"
 						>
 							<i className="mr-1 fa-solid fa-file-circle-plus"></i>
 							<span>Add NewJob</span>
-						</Link>
+						</span>
 					</li>
 				</ul>
 			</nav>
