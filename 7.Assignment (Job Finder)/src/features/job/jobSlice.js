@@ -9,8 +9,8 @@ const initialState = {
 	editJobData: {},
 };
 
-export const getAllJobs = createAsyncThunk('fetch/fetchJobs', async () => {
-	const data = await fetchJobs();
+export const getAllJobs = createAsyncThunk('fetch/fetchJobs', async ({ type = '' } = {}) => {
+	const data = await fetchJobs(type);
 	return data;
 });
 

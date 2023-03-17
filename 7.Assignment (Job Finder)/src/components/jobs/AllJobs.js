@@ -9,6 +9,7 @@ const AllJobs = () => {
 	useEffect(() => {
 		dispatch(getAllJobs());
 	}, [dispatch]);
+
 	return (
 		<div className="jobs-list">
 			{jobs.map((job) => (

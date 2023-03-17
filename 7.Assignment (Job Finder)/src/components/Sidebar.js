@@ -1,13 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { removeEditData } from '../features/job/jobSlice';
+import { getAllJobs, removeEditData } from '../features/job/jobSlice';
 
 const Sidebar = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
 
+	const typeChangeHandler = (type) => {
+		dispatch(getAllJobs({ type }));
+	};
+
 	const route = (type = '/') => {
+		type === '/' && dispatch(getAllJobs());
 		navigate(type);
 		dispatch(removeEditData());
 	};
@@ -27,19 +32,19 @@ const Sidebar = () => {
 							<span> All Available Jobs</span>
 						</span>
 						<ul className="space-y-6 lg:space-y-2 ">
-							<li>
+							<li onClick={() => typeChangeHandler('Internship')}>
 								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#FF5757]"></i>
 									Internship
 								</span>
 							</li>
-							<li>
+							<li onClick={() => typeChangeHandler('Full Time')}>
 								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#FF8A00]"></i>
 									Full Time
 								</span>
 							</li>
-							<li>
+							<li onClick={() => typeChangeHandler('Remote')}>
 								<span className="sub-menu cursor-pointer">
 									<i className="mr-1 fa-solid fa-stop !text-[#56E5C4]"></i>
 									Remote

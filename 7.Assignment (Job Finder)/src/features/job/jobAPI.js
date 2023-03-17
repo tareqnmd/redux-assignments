@@ -1,7 +1,8 @@
 import axios from '../../utils/axios';
 
-export const fetchJobs = async () => {
-	const response = await axios.get('/jobs');
+export const fetchJobs = async (type) => {
+	const query = type ? `?type=${type}` : '';
+	const response = await axios.get(`/jobs${query}`);
 	return response.data;
 };
 
