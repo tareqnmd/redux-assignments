@@ -5,21 +5,21 @@ export const apiSlice = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'http://localhost:9000',
 	}),
-	tagTypes: ['books'],
+	tagTypes: ['Books', 'Book'],
 	endpoints: (builder) => ({
 		getBooks: builder.query({
 			query: () => ({
 				url: '/books',
 			}),
 			keepUnusedDataFor: 120,
-			providedTags: ['books'],
+			providesTags: ['Books'],
 		}),
 		getBook: builder.query({
 			query: (id) => ({
 				url: `/books/${id}`,
 			}),
-			providedTags: (result, error, arg) => [
-				{ type: 'book', id: arg.id },
+			providesTags: (result, error, arg) => [
+				{ type: 'Book', id: arg.id },
 			],
 		}),
 		addBook: builder.mutation({
@@ -28,7 +28,7 @@ export const apiSlice = createApi({
 				method: 'POST',
 				body: data,
 			}),
-			invalidatesTags: ['books'],
+			invalidatesTags: ['Books'],
 		}),
 		editBook: builder.mutation({
 			query: ({ id, data }) => ({
@@ -37,16 +37,16 @@ export const apiSlice = createApi({
 				body: data,
 			}),
 			invalidatesTags: (result, error, arg) => [
-				'books',
-				{ type: 'book', id: arg.id },
+				'Books',
+				{ type: 'Book', id: arg.id },
 			],
 		}),
 		deleteBook: builder.mutation({
 			query: (id) => ({
-				url: `/videos/${id}`,
+				url: `/books/${id}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: ['books'],
+			invalidatesTags: ['Books'],
 		}),
 	}),
 });
