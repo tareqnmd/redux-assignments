@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "sadas yuyu",
+      "author": "asd tyu",
+      "thumbnail": "asd tt",
+      "price": 200,
+      "rating": 4,
+      "featured": "on",
+      "id": 5
     }
   ]
 }

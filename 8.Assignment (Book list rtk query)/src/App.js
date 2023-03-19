@@ -18,7 +18,7 @@ const App = () => {
 						element={<Add />}
 					/>
 					<Route
-						path="/edit/:editId"
+						path="/edit/:bookId"
 						element={<Edit />}
 					/>
 				</Routes>
