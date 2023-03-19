@@ -13,12 +13,12 @@ const Rating = ({ rating }) => {
 	}, [rating]);
 	return (
 		<div className="lws-stars">
-			{ratings.map(({ _, index }) => (
+			{ratings.map((_, index) => (
 				<svg
+					key={index}
 					viewBox="0 0 20 20"
 					fill="currentColor"
 					className="star"
-					key={index}
 				>
 					<path
 						fillRule="evenodd"
