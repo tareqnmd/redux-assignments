@@ -1,8 +1,20 @@
+import { useSelector } from 'react-redux';
 import { useGetBooksQuery } from '../../features/api/apiSlice';
 import BookCard from './BookCard';
 
+const filteredBooks = (books, searchText, featured) => {
+	const filteredData = books.filter((book) =>
+		book.name.toLowerCase().includes(searchText.toLowerCase())
+	);
+	return featured === 'featured'
+		? filteredData.filter((item) => item.featured)
+		: filteredData;
+};
+
 const BookList = () => {
 	const { data: books, isLoading, isError } = useGetBooksQuery();
+	const { searchText, featured } = useSelector((state) => state.filter);
+
 	let content = null;
 	if (isLoading) {
 		content = 'Loading...';
@@ -14,7 +26,7 @@ const BookList = () => {
 		content = 'No Data Found';
 	}
 	if (!isLoading && !isError && books.length > 0) {
-		content = books.map((book) => (
+		content = filteredBooks(books, searchText, featured).map((book) => (
 			<BookCard
 				key={book.id}
 				book={book}

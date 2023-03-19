@@ -1,8 +1,10 @@
+import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.svg';
+import { searchFilter } from '../features/filter/filterSlice';
 const Navbar = () => {
 	const location = useLocation();
-
+	const dispatch = useDispatch();
 	return (
 		<nav className="py-4 2xl:px-6">
 			<div className="container flex items-center justify-between">
@@ -53,6 +55,9 @@ const Navbar = () => {
 							placeholder="Filter books..."
 							className="search"
 							id="lws-search"
+							onChange={(e) => {
+								dispatch(searchFilter(e.target.value));
+							}}
 						/>
 					</div>
 				</form>
