@@ -1,13 +1,35 @@
+import { useState } from 'react';
+
 const TaskForm = () => {
+	const [values, setValues] = useState({
+		taskName: '',
+		teamMember: '',
+		project: '',
+		deadline: '',
+		status: 'pending',
+	});
+	const stateChange = (e) => {
+		const { name, value } = e.target;
+		setValues((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		console.log('values', values);
+	};
 	return (
 		<div className="justify-center mb-10 space-y-2 md:flex md:space-y-0">
-			<form className="space-y-6">
+			<form
+				className="space-y-6"
+				onSubmit={submitHandler}
+			>
 				<div className="fieldContainer">
 					<label htmlFor="lws-taskName">Task Name</label>
 					<input
 						type="text"
 						name="taskName"
 						id="lws-taskName"
+						onChange={stateChange}
 						required
 						placeholder="Implement RTK Query"
 					/>
@@ -17,6 +39,7 @@ const TaskForm = () => {
 					<label htmlFor="lws-teamMember">Assign To</label>
 					<select
 						name="teamMember"
+						onChange={stateChange}
 						id="lws-teamMember"
 						required
 					>
@@ -40,6 +63,7 @@ const TaskForm = () => {
 					<label htmlFor="lws-projectName">Project Name</label>
 					<select
 						id="lws-projectName"
+						onChange={stateChange}
 						name="projectName"
 						required
 					>
@@ -64,6 +88,7 @@ const TaskForm = () => {
 					<input
 						type="date"
 						name="deadline"
+						onChange={stateChange}
 						id="lws-deadline"
 						required
 					/>
