@@ -1,11 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeCheckedProjects, setCheckedProjects } from '../../features/projects/projectsSlice';
 
 const Project = ({ project }) => {
 	const { colorClass, projectName } = project || {};
 	const { checked = [] } = useSelector((state) => state.projects);
+	const dispatch = useDispatch();
 	const stateChange = (e) => {
 		const { checked } = e.target;
-		console.log('checked', checked);
+		if (checked) {
+			dispatch(setCheckedProjects(projectName));
+		} else {
+			dispatch(removeCheckedProjects(projectName));
+		}
 	};
 	return (
 		<div className="checkbox-container">

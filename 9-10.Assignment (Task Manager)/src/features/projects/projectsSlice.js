@@ -13,7 +13,7 @@ const projectsSlice = createSlice({
 			state.checked.push(action.payload);
 		},
 		removeCheckedProjects: (state, action) => {
-			state.checked = state.filter((item) => item !== action.payload);
+			state.checked = state.checked.filter((item) => item !== action.payload);
 		},
 	},
 });
