@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import { useDeleteTaskMutation, useEditTaskMutation } from '../../features/tasks/tasksAPi';
 
 const Task = ({ task }) => {
 	const navigate = useNavigate();
+	const [deleteTask] = useDeleteTaskMutation();
+	const [editTask] = useEditTaskMutation();
 	const { id, taskName, project, teamMember, deadline, status } = task || {};
 	const getDate = () => {
 		return new Date(deadline).getDate();
@@ -10,11 +13,15 @@ const Task = ({ task }) => {
 		return new Date(deadline).toLocaleString('default', { month: 'long' });
 	};
 	const taskDelete = () => {
-		console.log('id', id);
+		deleteTask(id);
 	};
 	const taskEdit = () => {
 		navigate('/edit/' + id);
 	};
+	const statusChange = (e) => {
+		editTask({ id, data: { status: e.target.value } });
+	};
+
 	return (
 		<div className="lws-task">
 			<div className="flex items-center gap-2 text-slate">
@@ -79,6 +86,7 @@ const Task = ({ task }) => {
 				<select
 					className="lws-status"
 					value={status}
+					onChange={statusChange}
 				>
 					<option value="pending">Pending</option>
 					<option value="inProgress">In Progress</option>
