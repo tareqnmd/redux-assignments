@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeCheckedProjects, setCheckedProjects } from '../../features/projects/projectsSlice';
 
 const Project = ({ project }) => {
-	const { colorClass, projectName } = project || {};
+	const { id, colorClass, projectName } = project || {};
 	const { checked = [] } = useSelector((state) => state.projects);
 	const dispatch = useDispatch();
 	const stateChange = (e) => {
 		const { checked } = e.target;
 		if (checked) {
-			dispatch(setCheckedProjects(projectName));
+			dispatch(setCheckedProjects(id));
 		} else {
-			dispatch(removeCheckedProjects(projectName));
+			dispatch(removeCheckedProjects(id));
 		}
 	};
 	return (
@@ -18,7 +18,7 @@ const Project = ({ project }) => {
 			<input
 				type="checkbox"
 				className={colorClass}
-				checked={checked.includes(projectName)}
+				checked={checked.includes(id)}
 				onChange={stateChange}
 			/>
 			<p className="label">{projectName}</p>

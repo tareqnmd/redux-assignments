@@ -11,7 +11,7 @@ export const projectsApi = apiSlice.injectEndpoints({
 				try {
 					const { data } = await queryFulfilled;
 					if (data.length > 0) {
-						dispatch(checkedProjects(data?.map((item) => item.projectName)));
+						dispatch(checkedProjects(data?.map((item) => item.id)));
 					}
 				} catch (error) {}
 			},
