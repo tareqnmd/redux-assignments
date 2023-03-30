@@ -88,6 +88,13 @@ const Task = ({ task }) => {
 					value={status}
 					onChange={statusChange}
 				>
+					<option
+						value=""
+						hidden
+						defaultChecked
+					>
+						Select Status
+					</option>
 					<option value="pending">Pending</option>
 					<option value="inProgress">In Progress</option>
 					<option value="complete">Completed</option>
