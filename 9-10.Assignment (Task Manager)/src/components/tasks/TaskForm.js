@@ -1,13 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGetProjectQuery, useGetProjectsQuery } from '../../features/projects/projectsAPi';
+import { useAddTaskMutation } from '../../features/tasks/tasksAPi';
+import { useGetTeamQuery, useGetTeamsQuery } from '../../features/team/teamAPi';
 
 const TaskForm = () => {
 	const [values, setValues] = useState({
 		taskName: '',
 		teamMember: '',
-		projectName: '',
+		project: '',
 		deadline: '',
 		status: 'pending',
 	});
+	const navigate = useNavigate();
+	const [add, { isLoading, isError, error, isSuccess }] = useAddTaskMutation();
+	const { data: teamMember } = useGetTeamQuery(values.teamMember, { skip: !values.teamMember });
+	const { data: project } = useGetProjectQuery(values.project, {
+		skip: !values.project,
+	});
+	const { data: teams } = useGetTeamsQuery();
+	const { data: projects } = useGetProjectsQuery();
 	const stateChange = (e) => {
 		const { name, value } = e.target;
 		setValues((prev) => ({ ...prev, [name]: value }));
@@ -15,8 +27,15 @@ const TaskForm = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log('values', values);
+		const payload = { ...values, teamMember, project };
+		add(payload);
 	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			navigate('/');
+		}
+	}, [navigate, isSuccess]);
 	return (
 		<div className="justify-center mb-10 space-y-2 md:flex md:space-y-0">
 			<form
@@ -46,17 +65,18 @@ const TaskForm = () => {
 						<option
 							value=""
 							hidden
-							selected
+							defaultChecked
 						>
 							Select Job
 						</option>
-						<option>Sumit Saha</option>
-						<option>Sadh Hasan</option>
-						<option>Akash Ahmed</option>
-						<option>Md Salahuddin</option>
-						<option>Riyadh Hassan</option>
-						<option>Ferdous Hassan</option>
-						<option>Arif Almas</option>
+						{teams?.map((item) => (
+							<option
+								key={item.id}
+								value={item.id}
+							>
+								{item.name}
+							</option>
+						))}
 					</select>
 				</div>
 				<div className="fieldContainer">
@@ -64,22 +84,24 @@ const TaskForm = () => {
 					<select
 						id="lws-projectName"
 						onChange={stateChange}
-						name="projectName"
+						name="project"
 						required
 					>
 						<option
 							value=""
 							hidden
-							selected
+							defaultChecked
 						>
 							Select Project
 						</option>
-						<option>Scoreboard</option>
-						<option>Flight Booking</option>
-						<option>Product Cart</option>
-						<option>Book Store</option>
-						<option>Blog Application</option>
-						<option>Job Finder</option>
+						{projects?.map((item) => (
+							<option
+								key={item.id}
+								value={item.id}
+							>
+								{item.projectName}
+							</option>
+						))}
 					</select>
 				</div>
 
@@ -103,6 +125,8 @@ const TaskForm = () => {
 					</button>
 				</div>
 			</form>
+			<div>{isLoading && <>Loading...</>}</div>
+			<div>{!isLoading && isError && error.data}</div>
 		</div>
 	);
 };

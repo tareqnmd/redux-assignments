@@ -16,7 +16,12 @@ export const projectsApi = apiSlice.injectEndpoints({
 				} catch (error) {}
 			},
 		}),
+		getProject: builder.query({
+			query: (id) => ({
+				url: `/projects/${id}`,
+			}),
+		}),
 	}),
 });
 
-export const { useGetProjectsQuery } = projectsApi;
+export const { useGetProjectsQuery, useGetProjectQuery } = projectsApi;

@@ -2,12 +2,17 @@ import { apiSlice } from '../api/apiSlice';
 
 export const teamApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
-		getTeam: builder.query({
+		getTeams: builder.query({
 			query: () => ({
 				url: '/team',
+			}),
+		}),
+		getTeam: builder.query({
+			query: (id) => ({
+				url: `/team/${id}`,
 			}),
 		}),
 	}),
 });
 
-export const { useGetTeamQuery } = teamApi;
+export const { useGetTeamsQuery, useGetTeamQuery } = teamApi;

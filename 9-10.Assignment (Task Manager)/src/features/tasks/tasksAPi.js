@@ -17,4 +17,4 @@ export const tasksApi = apiSlice.injectEndpoints({
 	}),
 });
 
-export const { useGetTasksQuery } = tasksApi;
+export const { useGetTasksQuery, useAddTaskMutation } = tasksApi;

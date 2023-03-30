@@ -1,8 +1,8 @@
-import { useGetTeamQuery } from '../../features/team/teamAPi';
+import { useGetTeamsQuery } from '../../features/team/teamAPi';
 import Team from './Team';
 
 const Teams = () => {
-	const { data, isLoading, isError, error } = useGetTeamQuery();
+	const { data, isLoading, isError, error } = useGetTeamsQuery();
 	let content = null;
 	if (isLoading) {
 		content = 'Loading..';
