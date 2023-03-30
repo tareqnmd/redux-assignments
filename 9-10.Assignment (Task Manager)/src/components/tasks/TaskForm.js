@@ -4,7 +4,7 @@ const TaskForm = () => {
 	const [values, setValues] = useState({
 		taskName: '',
 		teamMember: '',
-		project: '',
+		projectName: '',
 		deadline: '',
 		status: 'pending',
 	});
