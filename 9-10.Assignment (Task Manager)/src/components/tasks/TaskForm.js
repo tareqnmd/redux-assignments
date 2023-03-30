@@ -10,7 +10,6 @@ const TaskForm = () => {
 		teamMember: '',
 		project: '',
 		deadline: '',
-		status: 'pending',
 	});
 	const navigate = useNavigate();
 	const [add, { isLoading, isError, error, isSuccess }] = useAddTaskMutation();
@@ -27,7 +26,7 @@ const TaskForm = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const payload = { ...values, teamMember, project };
+		const payload = { ...values, status: 'pending', teamMember, project };
 		add(payload);
 	};
 
