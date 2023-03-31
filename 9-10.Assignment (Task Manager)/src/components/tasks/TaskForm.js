@@ -37,7 +37,7 @@ const TaskForm = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const payload = { ...values, status: 'pending', teamMember, project };
-		id ? edit({ id, payload }) : add(payload);
+		id ? edit({ id, data: payload }) : add(payload);
 	};
 
 	useEffect(() => {
