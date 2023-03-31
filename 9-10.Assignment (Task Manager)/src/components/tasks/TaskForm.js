@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetProjectQuery, useGetProjectsQuery } from '../../features/projects/projectsAPi';
-import { useAddTaskMutation, useGetTaskQuery } from '../../features/tasks/tasksAPi';
+import {
+	useAddTaskMutation,
+	useEditTaskMutation,
+	useGetTaskQuery,
+} from '../../features/tasks/tasksAPi';
 import { useGetTeamQuery, useGetTeamsQuery } from '../../features/team/teamAPi';
 
 const TaskForm = () => {
@@ -14,6 +18,10 @@ const TaskForm = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const [add, { isLoading, isError, error, isSuccess }] = useAddTaskMutation();
+	const [
+		edit,
+		{ isLoading: editLoading, isError: editError, error: editErrorMessage, isSuccess: editSuccess },
+	] = useEditTaskMutation();
 	const { data: editTask } = useGetTaskQuery(id, { skip: !!!id });
 	const { data: teamMember } = useGetTeamQuery(values.teamMember, { skip: !!!values.teamMember });
 	const { data: project } = useGetProjectQuery(values.project, {
@@ -29,7 +37,7 @@ const TaskForm = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const payload = { ...values, status: 'pending', teamMember, project };
-		add(payload);
+		id ? edit({ id, payload }) : add(payload);
 	};
 
 	useEffect(() => {
@@ -43,10 +51,10 @@ const TaskForm = () => {
 	}, [editTask]);
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (isSuccess || editSuccess) {
 			navigate('/');
 		}
-	}, [navigate, isSuccess]);
+	}, [navigate, isSuccess, editSuccess]);
 	return (
 		<>
 			<div className="justify-center mb-10 space-y-2 md:flex md:space-y-0">
@@ -144,6 +152,8 @@ const TaskForm = () => {
 			</div>
 			<div>{isLoading && <>Loading...</>}</div>
 			<div>{!isLoading && isError && error.data}</div>
+			<div>{editLoading && <>Loading...</>}</div>
+			<div>{!editLoading && editError && editErrorMessage.data}</div>
 		</>
 	);
 };
