@@ -31,6 +31,26 @@ export const tasksApi = apiSlice.injectEndpoints({
 				method: 'PATCH',
 				body: data,
 			}),
+			async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+				//optimistic
+				const taskUpdate = dispatch(
+					apiSlice.util.updateQueryData('getTask', arg?.id, (draft) => {
+						Object.assign(draft, arg?.data);
+					})
+				);
+				const tasksUpdate = dispatch(
+					apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+						const editTask = draft?.find((task) => String(task.id) === String(arg.id));
+						Object.assign(editTask, arg?.data);
+					})
+				);
+				try {
+					await queryFulfilled;
+				} catch (error) {
+					taskUpdate.undo();
+					tasksUpdate.undo();
+				}
+			},
 		}),
 	}),
 });
