@@ -22,9 +22,9 @@ const Tasks = () => {
 	} else if (!isLoading && !isError && data?.length === 0) {
 		content = 'No Data Found';
 	} else if (!isLoading && !isError && data?.length > 0) {
-		content = filterData(data, checked, searchData)?.map((task) => (
+		content = filterData(data, checked, searchData)?.map((task, i) => (
 			<Task
-				key={task?.id}
+				key={task?.id ?? i}
 				task={task}
 			/>
 		));

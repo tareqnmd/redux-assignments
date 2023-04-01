@@ -18,6 +18,17 @@ export const tasksApi = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: data,
 			}),
+			async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+				try {
+					const newTask = await queryFulfilled;
+					//pessimistic
+					dispatch(
+						apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+							draft.push(newTask?.data);
+						})
+					);
+				} catch (error) {}
+			},
 		}),
 		deleteTask: builder.mutation({
 			query: (id) => ({
