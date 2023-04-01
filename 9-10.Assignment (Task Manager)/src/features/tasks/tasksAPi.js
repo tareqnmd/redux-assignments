@@ -6,6 +6,16 @@ export const tasksApi = apiSlice.injectEndpoints({
 			query: () => ({
 				url: '/tasks',
 			}),
+			// async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+			// 	try {
+			// 		await cacheDataLoaded;
+			// 		if (true) {
+			// 			updateCachedData((draft) => {
+			// 				draft.push(arg?.data);
+			// 			});
+			// 		}
+			// 	} catch (error) {}
+			// },
 		}),
 		getTask: builder.query({
 			query: (id) => ({
