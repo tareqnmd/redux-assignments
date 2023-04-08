@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const Login = () => {
 	return (
 		<form
@@ -49,12 +51,12 @@ const Login = () => {
 
 			<div className="flex items-center justify-end">
 				<div className="text-sm">
-					<a
-						href="./StudentReistration.html"
+					<NavLink
+						to="/student/registration"
 						className="font-medium text-violet-600 hover:text-violet-500"
 					>
 						Create New Account
-					</a>
+					</NavLink>
 				</div>
 			</div>
 
