@@ -1,17 +1,26 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Login = () => {
+	const [values, setValues] = useState({
+		email: '',
+		password: '',
+	});
+
+	const stateChange = (e) => {
+		const { name, value } = e.target;
+		setValues((prev) => ({ ...prev, [name]: value ?? null }));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('values', values);
+	};
 	return (
 		<form
 			className="mt-8 space-y-6"
-			action="#"
-			method="POST"
+			onSubmit={handleSubmit}
 		>
-			<input
-				type="hidden"
-				name="remember"
-				value="true"
-			/>
 			<div className="rounded-md shadow-sm -space-y-px">
 				<div>
 					<label
@@ -24,10 +33,10 @@ const Login = () => {
 						id="email-address"
 						name="email"
 						type="email"
-						autocomplete="email"
 						required
 						className="login-input rounded-t-md"
 						placeholder="Email address"
+						onChange={stateChange}
 					/>
 				</div>
 				<div>
@@ -41,10 +50,10 @@ const Login = () => {
 						id="password"
 						name="password"
 						type="password"
-						autocomplete="current-password"
 						required
 						className="login-input rounded-b-md"
 						placeholder="Password"
+						onChange={stateChange}
 					/>
 				</div>
 			</div>

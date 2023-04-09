@@ -1,9 +1,25 @@
+import { useState } from 'react';
+
 const Registration = () => {
+	const [values, setValues] = useState({
+		name: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
+	});
+
+	const stateChange = (e) => {
+		const { name, value } = e.target;
+		setValues((prev) => ({ ...prev, [name]: value ?? null }));
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('values', values);
+	};
 	return (
 		<form
 			className="mt-8 space-y-6"
-			action="#"
-			method="POST"
+			onSubmit={handleSubmit}
 		>
 			<div className="rounded-md shadow-sm -space-y-px">
 				<div>
@@ -14,25 +30,27 @@ const Registration = () => {
 						Name
 					</label>
 					<input
+						id="name"
 						name="name"
 						type="name"
-						autocomplete="name"
 						required
 						className="login-input rounded-t-md"
 						placeholder="Student Name"
+						onChange={stateChange}
 					/>
 				</div>
 				<div>
 					<label
-						htmlFor="email-address"
+						htmlFor="email"
 						className="sr-only"
 					>
 						Email address
 					</label>
 					<input
+						id="email"
 						name="email"
 						type="email"
-						autocomplete="email"
+						onChange={stateChange}
 						required
 						className="login-input "
 						placeholder="Email address"
@@ -46,9 +64,10 @@ const Registration = () => {
 						Password
 					</label>
 					<input
+						id="password"
 						name="password"
 						type="password"
-						autocomplete="current-password"
+						onChange={stateChange}
 						required
 						className="login-input"
 						placeholder="Password"
@@ -62,9 +81,10 @@ const Registration = () => {
 						Confirm Password
 					</label>
 					<input
-						name="confirm-password"
+						id="confirm-password"
+						name="confirmPassword"
 						type="password"
-						autocomplete="confirm-password"
+						onChange={stateChange}
 						required
 						className="login-input rounded-b-md"
 						placeholder="Confirm Password"
