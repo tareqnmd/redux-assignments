@@ -1,24 +1,49 @@
-const LeaderBoardItem = ({ type }) => {
+const LeaderBoardItem = ({ type, board }) => {
+	const { rank, name, quizMark, assignmentMark, totalMark } = board || {};
 	return (
-		<>
-			{type === 'self' ? (
-				<tr className="border-2 border-cyan">
-					<td className="table-td text-center font-bold">4</td>
-					<td className="table-td text-center font-bold">Saad Hasan</td>
-					<td className="table-td text-center font-bold">50</td>
-					<td className="table-td text-center font-bold">50</td>
-					<td className="table-td text-center font-bold">100</td>
-				</tr>
-			) : (
-				<tr className="border-b border-slate-600/50">
-					<td className="table-td text-center">4</td>
-					<td className="table-td text-center">Saad Hasan</td>
-					<td className="table-td text-center">50</td>
-					<td className="table-td text-center">50</td>
-					<td className="table-td text-center">100</td>
-				</tr>
-			)}
-		</>
+		<tr
+			className={
+				type === 'self'
+					? 'border-2 border-cyan'
+					: 'border-b border-slate-600/50'
+			}
+		>
+			<td
+				className={`table-td text-center ${
+					type === 'self' ? 'font-bold' : ''
+				}`}
+			>
+				{rank}
+			</td>
+			<td
+				className={`table-td text-center ${
+					type === 'self' ? 'font-bold' : ''
+				}`}
+			>
+				{name}
+			</td>
+			<td
+				className={`table-td text-center ${
+					type === 'self' ? 'font-bold' : ''
+				}`}
+			>
+				{quizMark}
+			</td>
+			<td
+				className={`table-td text-center ${
+					type === 'self' ? 'font-bold' : ''
+				}`}
+			>
+				{assignmentMark}
+			</td>
+			<td
+				className={`table-td text-center ${
+					type === 'self' ? 'font-bold' : ''
+				}`}
+			>
+				{totalMark}
+			</td>
+		</tr>
 	);
 };
 
