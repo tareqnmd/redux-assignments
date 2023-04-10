@@ -5,38 +5,38 @@ import QuizIcon from '../icons/QuizIcon';
 import VideoIcon from '../icons/VideoIcon';
 const DashboardInfo = () => {
 	return (
-		<div class="px-3 md:lg:xl:px-40  py-20 bg-opacity-10">
-			<div class="grid grid-cols-1 md:grid-cols-2  gap-6 p-8">
+		<div className="px-3 md:lg:xl:px-40  py-20 bg-opacity-10">
+			<div className="grid grid-cols-1 md:grid-cols-2  gap-6 p-8">
 				<NavLink
 					to="/dashboard/videos"
-					class="dashboard-item-card"
+					className="dashboard-item-card"
 				>
 					<VideoIcon />
-					<p class="text-slate-200 mt-3 ">Videos</p>
+					<p className="text-slate-200 mt-3 ">Videos</p>
 				</NavLink>
 
 				<NavLink
 					to="/dashboard/assignments"
-					class="dashboard-item-card"
+					className="dashboard-item-card"
 				>
 					<AssignmentIcon />
-					<p class="text-slate-200 mt-3">Assignment</p>
+					<p className="text-slate-200 mt-3">Assignment</p>
 				</NavLink>
 
 				<NavLink
 					to="/dashboard/quizzes"
-					class="dashboard-item-card"
+					className="dashboard-item-card"
 				>
 					<QuizIcon />
-					<p class="text-slate-200 mt-3 ">Quizzes</p>
+					<p className="text-slate-200 mt-3 ">Quizzes</p>
 				</NavLink>
 
 				<NavLink
 					to="/dashboard/assignment-marks"
-					class="dashboard-item-card"
+					className="dashboard-item-card"
 				>
 					<MarkIcon />
-					<p class="text-slate-200 mt-3 ">Assignment Mark</p>
+					<p className="text-slate-200 mt-3 ">Assignment Mark</p>
 				</NavLink>
 			</div>
 		</div>
