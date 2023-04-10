@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import PortalIcon from '../common/PortalIcon';
+import PortalIcon from '../icons/PortalIcon';
 
 const Navbar = () => {
 	return (
@@ -7,7 +7,7 @@ const Navbar = () => {
 			<div className="max-w-7xl px-5 lg:px-0 mx-auto flex justify-between py-3">
 				<PortalIcon />
 				<div className="flex items-center gap-3">
-					<NavLink to="/student/leader-board">Leaderboard</NavLink>
+					<NavLink to="/leader-board">Leaderboard</NavLink>
 					<h2 className="font-bold">User</h2>
 					<button className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan">
 						<svg

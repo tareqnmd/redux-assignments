@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import PlayIcon from '../../common/PlayIcon';
+import PlayIcon from '../../icons/PlayIcon';
 
 const NextVideo = ({ video }) => {
 	const { title, views, duration } = video || {};
@@ -11,13 +11,9 @@ const NextVideo = ({ video }) => {
 					<p className="text-slate-50 text-sm font-medium">{title}</p>
 				</NavLink>
 				<div>
-					<span className="text-gray-400 text-xs mt-1">
-						{duration} Mins
-					</span>
+					<span className="text-gray-400 text-xs mt-1">{duration} Mins</span>
 					<span className="text-gray-400 text-xs mt-1"> | </span>
-					<span className="text-gray-400 text-xs mt-1">
-						{views} views
-					</span>
+					<span className="text-gray-400 text-xs mt-1">{views} views</span>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 import SignWrapper from '../../components/common/SignWrapper';
 import Login from '../../components/login/Login';
 
-const StudentLogin = () => {
+const DashboardLogin = () => {
 	return (
 		<SignWrapper>
 			<Login />
@@ -9,4 +9,4 @@ const StudentLogin = () => {
 	);
 };
 
-export default StudentLogin;
+export default DashboardLogin;

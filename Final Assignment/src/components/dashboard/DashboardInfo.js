@@ -1,15 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import AssignmentIcon from './AssignmentIcon';
-import MarkIcon from './MarkIcon';
-import QuizIcon from './QuizIcon';
-import VideoIcon from './VideoIcon';
-
-const Dashboard = () => {
+import AssignmentIcon from '../icons/AssignmentIcon';
+import MarkIcon from '../icons/MarkIcon';
+import QuizIcon from '../icons/QuizIcon';
+import VideoIcon from '../icons/VideoIcon';
+const DashboardInfo = () => {
 	return (
 		<div class="px-3 md:lg:xl:px-40  py-20 bg-opacity-10">
 			<div class="grid grid-cols-1 md:grid-cols-2  gap-6 p-8">
 				<NavLink
-					to="/videos"
+					to="/dashboard/videos"
 					class="dashboard-item-card"
 				>
 					<VideoIcon />
@@ -17,7 +16,7 @@ const Dashboard = () => {
 				</NavLink>
 
 				<NavLink
-					to="/assignments"
+					to="/dashboard/assignments"
 					class="dashboard-item-card"
 				>
 					<AssignmentIcon />
@@ -25,7 +24,7 @@ const Dashboard = () => {
 				</NavLink>
 
 				<NavLink
-					to="/quizzes"
+					to="/dashboard/quizzes"
 					class="dashboard-item-card"
 				>
 					<QuizIcon />
@@ -33,7 +32,7 @@ const Dashboard = () => {
 				</NavLink>
 
 				<NavLink
-					to="/assignment-mark"
+					to="/dashboard/assignment-marks"
 					class="dashboard-item-card"
 				>
 					<MarkIcon />
@@ -44,4 +43,4 @@ const Dashboard = () => {
 	);
 };
 
-export default Dashboard;
+export default DashboardInfo;

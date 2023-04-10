@@ -1,12 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-
 import Layout from './components/common/Layout';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import StudentLeaderBoard from './pages/student/StudentLeaderBoard';
-import StudentLogin from './pages/student/StudentLogin';
-import StudentQuiz from './pages/student/StudentQuiz';
-import StudentRegistration from './pages/student/StudentRegistration';
-import StudentVideo from './pages/student/StudentVideo';
+import Quiz from './components/student/quiz/Quiz';
+import AssignmentList from './pages/admin/AssignmentList';
+import AssignmentMarkList from './pages/admin/AssignmentMarkList';
+import Dashboard from './pages/admin/Dashboard';
+import QuizList from './pages/admin/QuizList';
+import VideoList from './pages/admin/VideoList';
+import LeaderBoard from './pages/student/LeaderBoard';
+import Login from './pages/student/Login';
+import Registration from './pages/student/Registration';
+import Video from './pages/student/Video';
 import './style/global.scss';
 const App = () => {
 	return (
@@ -14,28 +17,44 @@ const App = () => {
 			<Routes>
 				<Route
 					path="/login"
-					element={<StudentLogin />}
+					element={<Login />}
 				/>
 				<Route
 					path="/registration"
-					element={<StudentRegistration />}
+					element={<Registration />}
 				/>
 
 				<Route
 					path="/quiz"
-					element={<StudentQuiz />}
+					element={<Quiz />}
 				/>
 				<Route
 					path="/leader-board"
-					element={<StudentLeaderBoard />}
+					element={<LeaderBoard />}
 				/>
 				<Route
 					path="/video/:videoId"
-					element={<StudentVideo />}
+					element={<Video />}
 				/>
 				<Route
 					path="/dashboard"
-					element={<AdminDashboard />}
+					element={<Dashboard />}
+				/>
+				<Route
+					path="/dashboard/videos"
+					element={<VideoList />}
+				/>
+				<Route
+					path="/dashboard/quizzes"
+					element={<QuizList />}
+				/>
+				<Route
+					path="/dashboard/assignments"
+					element={<AssignmentList />}
+				/>
+				<Route
+					path="/dashboard/assignment-marks"
+					element={<AssignmentMarkList />}
 				/>
 			</Routes>
 		</Layout>

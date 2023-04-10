@@ -1,7 +1,7 @@
 import LeaderBoardHeader from './LeaderBoardHeader';
 import LeaderBoardItem from './LeaderBoardItem';
 
-const LeaderBoard = () => {
+const LeaderBoardData = () => {
 	return (
 		<>
 			<div>
@@ -26,4 +26,4 @@ const LeaderBoard = () => {
 	);
 };
 
-export default LeaderBoard;
+export default LeaderBoardData;

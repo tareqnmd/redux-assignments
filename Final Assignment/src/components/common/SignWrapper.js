@@ -1,4 +1,4 @@
-import PortalIcon from './PortalIcon';
+import PortalIcon from '../icons/PortalIcon';
 
 const SignWrapper = ({ children }) => {
 	return (
